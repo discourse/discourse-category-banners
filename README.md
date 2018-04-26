@@ -1,1 +1,1 @@
-# discourse-category-headers
+# discourse-category-banners
