@@ -1,0 +1,8 @@
+show_description: 
+  default: true
+  description: 'Show description from "About This Category" post'
+
+exceptions:
+  default: support
+  type: list
+  description: "Banner will not show for these categories"
