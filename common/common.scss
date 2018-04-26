@@ -7,6 +7,9 @@
   .category-title-contents {
     max-width: 500px;
     padding: 40px 0;
+    h1 {
+      text-transform: capitalize;
+    }
   }
 }
 .category-header {
