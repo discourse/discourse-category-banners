@@ -17,8 +17,8 @@
 
       if(/^\/c\//.test(path)) {
           const hideMobile = (!settings.show_mobile && this.site.mobileView) ? "true" : hideMobile;
-          const subCat = (!settings.show_subcat && category.parentCategory) ? "true" : subCat;
-          const noDesc = (settings.show_nodesc && !category.description_text) ? "true" : noDesc;
+          const subCat = (!settings.show_subcategory && category.parentCategory) ? "true" : subCat;
+          const noDesc = (settings.hide_if_no_description && !category.description_text) ? "true" : noDesc;
           
           if(!isException && !noDesc && !subCat && !hideMobile) {
             $("body").addClass("category-header");  

@@ -6,13 +6,13 @@ show_mobile:
   default: true
   description: 'Show banners on mobile'
 
-show_subcat: 
+show_subcategory: 
   default: true
   description: 'Show banners for subcategories'
 
-show_nodesc: 
-  default: false
-  description: 'Hide banners if description is not set'
+hide_if_no_description: 
+  default: true
+  description: 'Hide banners if category description is not set'
 
 exceptions:
   default: ""
