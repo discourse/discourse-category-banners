@@ -1,0 +1,156 @@
+.d-header .title {
+  display: flex;
+}
+
+.d-header .header-buttons {
+  margin-top: .1em;
+}
+
+.header-search-enabled .search-header a, .header-search-enabled .search-header a:visited {
+  color: $tertiary;
+}
+
+.header-search-enabled #search-button {
+  display: none;
+}
+
+.header-search-enabled.align-right .contents {
+   display: flex;
+   justify-content: space-between;
+   align-items: start;
+
+   &:before, &:after {
+     display: none;
+   }
+
+   .title {
+     flex: 1 1 auto;
+     justify-content: space-between;
+   }
+
+   .search-header {
+     margin-left: 0;
+     margin-right: 10px;
+   }
+
+   .search-input {
+     margin-right: 0;
+   }
+
+   .search-context {
+     padding-top: 5px;
+   }
+
+   .results {
+     right: 0;
+   }
+}
+
+.title .search-header {
+  width: 350px;
+  margin-left: 20px;
+  margin-top: 4px;
+  position: relative;
+  white-space: nowrap;
+
+  &.show-header-results {
+    box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.5);
+    background-color: $secondary;
+  }
+
+  #search-term {
+    background-color: $secondary;
+    margin: 0;
+    width: 100%;
+  }
+
+  .searching .spinner {
+    display: none;
+  }
+
+  .search-icon {
+    float: right;
+    border: 1px solid mix($primary, $secondary);
+    border-left: none;
+    height: 32px;
+  }
+
+  .search-input {
+    overflow: hidden;
+  }
+
+  .search-context {
+    padding: 0;
+    padding: 5px;
+
+    label {
+        float: left;
+    }
+  }
+
+  .results {
+    border-top: none;
+    width: 100%;
+    white-space: normal;
+
+    ul {
+      list-style-type: none;
+      margin: 0 5px 5px 5px;
+    }
+
+    .heading {
+      padding: 5px 0 5px 5px;
+
+      .filter {
+        padding: 0 5px;
+      }
+    }
+
+    .no-results {
+      padding: 5px;
+      text-align: center;
+    }
+
+    .search-link {
+      .badge-category-parent {
+        line-height: 0.8em;
+      }
+      .topic-title {
+        margin-right: 6px;
+      }
+
+      .topic-statuses {
+        float: none;
+        display: inline-block;
+        color: dark-light-choose(scale-color($primary, $lightness: 50%), scale-color($secondary, $lightness: 50%));
+        margin: 0;
+        .fa {
+          margin: 0;
+        }
+      }
+    }
+
+    li:not(.category):not(.heading) {
+      font-size: 0.929em;
+      line-height: 16px;
+
+      .fa {
+        font-size: inherit;
+      }
+
+      a {
+        display: block;
+        padding: 5px;
+        transition: all linear .15s;
+      }
+
+      &:hover a:not(.badge-notification) {
+        background-color: dark-light-diff($highlight, $secondary, 50%, -55%);
+      }
+
+      button {
+        margin-left: 5px;
+      }
+    }
+  }
+}

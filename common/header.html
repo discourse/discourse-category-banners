@@ -1,28 +1,35 @@
 <script type="text/discourse-plugin" version="0.8">
-  const container = Discourse.__container__;    
+  const container = Discourse.__container__;
   const { h } = require('virtual-dom');
- 
-  api.createWidget('category-header-widget', {
-      tagName: 'span', 
+
+  api.createWidget('homepage-header-widget', {
+      tagName: 'span',
       html(attrs, state) {
-      
+        alert('foo')
+      }
+  })
+
+  api.createWidget('category-header-widget', {
+      tagName: 'span',
+      html(attrs, state) {
+
       const path = window.location.pathname;
       let category;
-        
+
       const controller = container.lookup('controller:navigation/category');
       category = controller.get("category");
-     
-      const isException = category && 
+
+      const isException = category &&
       settings.exceptions.split("|").includes(category.name);
 
       if(/^\/c\//.test(path)) {
           const hideMobile = (!settings.show_mobile && this.site.mobileView) ? "true" : hideMobile;
           const subCat = (!settings.show_subcategory && category.parentCategory) ? "true" : subCat;
           const noDesc = (settings.hide_if_no_description && !category.description_text) ? "true" : noDesc;
-          
+
           if(!isException && !noDesc && !subCat && !hideMobile) {
-            $("body").addClass("category-header");  
-            
+            $("body").addClass("category-header");
+
             function catDesc() {
               if(settings.show_description) {
                 return h('p', category.description_text);
@@ -31,26 +38,26 @@
 
             function ifProtected() {
                 if(category.read_restricted) {
-                    return h('i.fa.fa-lock');                    
+                    return h('i.fa.fa-lock');
                 }
             }
-          
+
             return h('div.category-title-header', {
                 "attributes" : {
                     "style" : "background-color: #" + category.color + "; color: #" + category.text_color + ";"
                 }
               }, h('div.category-title-contents', [
                       ifProtected(),
-                      h('h1', category.name),   
+                      h('h1', category.name),
                       h('div.category-title-description',catDesc())
                   ]),
-                  
+
               );
           }
           } else {
               $("body").removeClass("category-header");
-          }   
-      }      
+          }
+     }
   }),
 
   api.decorateWidget('category-header-widget:after', helper => {
@@ -59,8 +66,12 @@
       });
   });
 
-</script> 
+</script>
 
 <script type='text/x-handlebars' data-template-name='/connectors/below-site-header/category-header-widget'>
   {{mount-widget widget="category-header-widget"}}
+</script>
+
+<script type='text/x-handlebars' data-template-name='/connectors/below-site-header/homepage-header-widget'>
+  {{mount-widget widget="homepage-header-widget"}}
 </script>
