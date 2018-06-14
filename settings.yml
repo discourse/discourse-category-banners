@@ -1,16 +1,49 @@
-show_description: 
+# show_title_on_homepage:
+#   default: true
+#   description: 'Show or hide custom banner title on home page'
+
+# homepage_title:
+#   default: ''
+
+# homepage_title_color:
+#   default: '#000'
+
+# homepage_title_font_size:
+#   default: ''
+
+# homepage_description:
+#   default: ''
+
+# homepage_description_color:
+#   default: '#000'
+
+# homepage_description_font_size:
+#   default: ''
+
+# homepage_background_color:
+#   default: '#fff'
+
+# homepage_background_image_url:
+#   default: ''
+
+align_right:
+  default: false
+  type: bool
+  description: "Align the header search on the right of the header"
+
+show_description:
   default: true
   description: 'Show description from "About This Category" post'
 
-show_mobile: 
+show_mobile:
   default: true
   description: 'Show banners on mobile'
 
-show_subcategory: 
+show_subcategory:
   default: true
   description: 'Show banners for subcategories'
 
-hide_if_no_description: 
+hide_if_no_description:
   default: true
   description: 'Hide banners if category description is not set'
 
