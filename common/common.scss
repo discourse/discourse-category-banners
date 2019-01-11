@@ -1,4 +1,4 @@
-.category-title-header {
+div[class^="category-title-header"] {
   padding-top: 60px;
   display: flex;
   text-align: center;
@@ -7,9 +7,10 @@
   .category-title-contents {
     max-width: 500px;
     padding: 40px 40px 30px;
-    i {
+    svg {
+      height: 1.5em;
+      width: 1.1em;
       margin-right: .25em;
-      font-size: 1.5em;
     }
     h1 {
       text-transform: capitalize;
