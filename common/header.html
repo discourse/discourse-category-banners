@@ -17,7 +17,8 @@
           const isException = category &&
           settings.exceptions.split("|").includes(category.name);
 
-          if(/^\/c\//.test(path)) {
+          const categoryPathChecker = new RegExp("^" + Discourse.BaseUri + "\\/c\\/");
+          if(categoryPathChecker.test(path)) {
               const hideMobile = (!settings.show_mobile && this.site.mobileView) ? "true" : hideMobile;
               const subCat = (!settings.show_subcategory && category.parentCategory) ? "true" : subCat;
               const noDesc = (settings.hide_if_no_description && !category.description_text) ? "true" : noDesc;
