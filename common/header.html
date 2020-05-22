@@ -16,13 +16,27 @@
 
           const isException = category &&
           settings.exceptions.split("|").includes(category.name);
+          
+          const categories = settings.categories.split("|").reduce(function(cats, t) {
+            let parts = t.split(':');
+            if (parts.length === 2) {
+              cats[parts[0]] = parts[1];
+            }
+            return cats;
+          }, {});
+          const isTarget = category && (
+            Object.keys(categories).length === 0 || (
+              (categories[category.name] || '').match(/all|no_sub/) ||
+              (category.parentCategory && (categories[category.parentCategory.name] || '').match(/all|only_sub/))
+            )
+          )
 
           if(/^\/c\//.test(path)) {
               const hideMobile = (!settings.show_mobile && this.site.mobileView) ? "true" : hideMobile;
               const subCat = (!settings.show_subcategory && category.parentCategory) ? "true" : subCat;
               const noDesc = (settings.hide_if_no_description && !category.description_text) ? "true" : noDesc;
 
-              if(!isException && !noDesc && !subCat && !hideMobile) {
+              if(isTarget && !isException && !noDesc && !subCat && !hideMobile) {
                   $("body").addClass("category-header");
 
                   function catDesc() {

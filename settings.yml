@@ -18,3 +18,12 @@ exceptions:
   default: ""
   type: list
   description: "Banner will not show for these categories"
+
+categories:
+  default: ""
+  type: list
+  description: |
+    Banner will only show for these categories. Format: name:target.
+    *targets* all: Named category and subcategories;
+              no_sub: Only the named category;
+              only_sub: Only subcategories of the named category;
