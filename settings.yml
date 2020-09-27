@@ -18,4 +18,4 @@ exceptions:
   default: ""
   type: list
   list_type: simple
-  description: "Banner will not show for these categories"
+  description: "Banner will not show for these categories NAMES. This is case sensitive."
