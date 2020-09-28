@@ -19,3 +19,13 @@ exceptions:
   type: list
   list_type: simple
   description: "Banner will not show for these categories NAMES. This is case sensitive."
+
+show_above_site_header:
+  default: false
+  type: bool
+  description: "Display the banner in the above site header connector."
+
+show_below_site_header:
+  default: true
+  type: bool
+  description: "Display the banner in the below site header connector."
