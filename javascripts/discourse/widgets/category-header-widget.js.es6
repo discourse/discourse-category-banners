@@ -2,11 +2,19 @@ import { h } from "virtual-dom";
 import { iconNode } from "discourse-common/lib/icon-library";
 import { createWidget } from "discourse/widgets/widget";
 
-function buildCategory(category) {
+function buildCategory(category, widget) {
   const content = [];
 
   if (category.read_restricted) {
     content.push(iconNode("lock"));
+  }
+
+  if (settings.show_category_icon) {
+    try {
+      content.push(widget.attach("category-icon", { category }));
+    } catch {
+      // if widget attaching fails, ignore it as it's probably the missing component
+    }
   }
 
   content.push(h("h1.category-title", category.name));
@@ -63,7 +71,7 @@ export default createWidget("category-header-widget", {
               style: `background-color: #${category.color}; color: #${category.text_color};`,
             },
           },
-          h("div.category-title-contents", buildCategory(category))
+          h("div.category-title-contents", buildCategory(category, this))
         );
       }
     } else {

@@ -17,6 +17,18 @@ div[class^="category-title-header"] {
     .category-title {
       display: inline;
     }
+
+    .category-icon-widget {
+      display: inline;
+
+      .category-icon {
+        .d-icon {
+          height: 1.5em;
+          width: 1.5em;
+          margin-right: 0.75em;
+        }
+      }
+    }
   }
 
   .category-title-description {
