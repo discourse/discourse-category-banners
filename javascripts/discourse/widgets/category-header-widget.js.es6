@@ -1,6 +1,8 @@
+import { getOwner } from "discourse-common/lib/get-owner";
 import { h } from "virtual-dom";
 import { iconNode } from "discourse-common/lib/icon-library";
 import { createWidget } from "discourse/widgets/widget";
+import Category from "discourse/models/category";
 
 function buildCategory(category, widget) {
   const content = [];
@@ -35,21 +37,26 @@ export default createWidget("category-header-widget", {
   tagName: "span.discourse-category-banners",
 
   html() {
-    const path = window.location.pathname;
-    const category = this.register
-      .lookup("controller:navigation/category")
-      .get("category");
+    const router = getOwner(this).lookup("router:main");
+    const route = router.currentRoute;
+    let isCategoryTopicList;
+    let params;
 
-    if (!category) {
-      return;
+    if (route && route.params) {
+      params = route.params;
+      isCategoryTopicList = route.params.hasOwnProperty(
+        "category_slug_path_with_id"
+      );
     }
 
-    const isException = settings.exceptions
-      .split("|")
-      .filter(Boolean)
-      .includes(category.name);
-
-    if (/^\/c\//.test(path)) {
+    if (isCategoryTopicList) {
+      const splitPath = params.category_slug_path_with_id.split("/");
+      const categoryId = splitPath[splitPath.length - 1];
+      const category = Category.findById(categoryId);
+      const isException = settings.exceptions
+        .split("|")
+        .filter(Boolean)
+        .includes(category.name);
       const hideMobile = !settings.show_mobile && this.site.mobileView;
       const isSubCategory =
         !settings.show_subcategory && category.parentCategory;
