@@ -39,20 +39,14 @@ export default createWidget("category-header-widget", {
   html() {
     const router = getOwner(this).lookup("router:main");
     const route = router.currentRoute;
-    let isCategoryTopicList;
-    let params;
-
-    if (route && route.params) {
-      params = route.params;
-      isCategoryTopicList = route.params.hasOwnProperty(
-        "category_slug_path_with_id"
+    if (
+      route &&
+      route.params &&
+      route.params.hasOwnProperty("category_slug_path_with_id")
+    ) {
+      const category = Category.findBySlugPathWithID(
+        route.params.category_slug_path_with_id
       );
-    }
-
-    if (isCategoryTopicList) {
-      const splitPath = params.category_slug_path_with_id.split("/");
-      const categoryId = splitPath[splitPath.length - 1];
-      const category = Category.findById(categoryId);
       const isException = settings.exceptions
         .split("|")
         .filter(Boolean)
