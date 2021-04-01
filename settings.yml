@@ -34,3 +34,6 @@ show_above_main_container:
   default: false
   type: bool
   description: "Display the banner in the above main container connector."
+show_category_icon:
+  default: false
+  description: "Show category icon from Discourse Category Icons component"

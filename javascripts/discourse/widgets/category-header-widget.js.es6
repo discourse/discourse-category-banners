@@ -1,12 +1,22 @@
+import { getOwner } from "discourse-common/lib/get-owner";
 import { h } from "virtual-dom";
 import { iconNode } from "discourse-common/lib/icon-library";
 import { createWidget } from "discourse/widgets/widget";
+import Category from "discourse/models/category";
 
-function buildCategory(category) {
+function buildCategory(category, widget) {
   const content = [];
 
   if (category.read_restricted) {
     content.push(iconNode("lock"));
+  }
+
+  if (settings.show_category_icon) {
+    try {
+      content.push(widget.attach("category-icon", { category }));
+    } catch {
+      // if widget attaching fails, ignore it as it's probably the missing component
+    }
   }
 
   content.push(h("h1.category-title", category.name));
@@ -27,21 +37,20 @@ export default createWidget("category-header-widget", {
   tagName: "span.discourse-category-banners",
 
   html() {
-    const path = window.location.pathname;
-    const category = this.register
-      .lookup("controller:navigation/category")
-      .get("category");
-
-    if (!category) {
-      return;
-    }
-
-    const isException = settings.exceptions
-      .split("|")
-      .filter(Boolean)
-      .includes(category.name);
-
-    if (/^\/c\//.test(path)) {
+    const router = getOwner(this).lookup("router:main");
+    const route = router.currentRoute;
+    if (
+      route &&
+      route.params &&
+      route.params.hasOwnProperty("category_slug_path_with_id")
+    ) {
+      const category = Category.findBySlugPathWithID(
+        route.params.category_slug_path_with_id
+      );
+      const isException = settings.exceptions
+        .split("|")
+        .filter(Boolean)
+        .includes(category.name);
       const hideMobile = !settings.show_mobile && this.site.mobileView;
       const isSubCategory =
         !settings.show_subcategory && category.parentCategory;
@@ -63,7 +72,7 @@ export default createWidget("category-header-widget", {
               style: `background-color: #${category.color}; color: #${category.text_color};`,
             },
           },
-          h("div.category-title-contents", buildCategory(category))
+          h("div.category-title-contents", buildCategory(category, this))
         );
       }
     } else {
