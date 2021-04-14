@@ -1,21 +1,36 @@
 div[class^="category-title-header"] {
-  padding-top: 60px;
   display: flex;
   text-align: center;
   width: 100%;
   justify-content: center;
+
   .category-title-contents {
     max-width: 500px;
     padding: 40px;
-    svg {
+
+    .d-icon-lock {
       height: 1.5em;
       width: 1.1em;
       margin-right: 0.25em;
     }
-    h1 {
+
+    .category-title {
       display: inline;
     }
+
+    .category-icon-widget {
+      display: inline;
+
+      .category-icon {
+        .d-icon {
+          height: 1.5em;
+          width: 1.5em;
+          margin-right: 0.75em;
+        }
+      }
+    }
   }
+
   .category-title-description {
     a,
     a:visited {
@@ -24,6 +39,7 @@ div[class^="category-title-header"] {
     }
   }
 }
+
 .category-header {
   #main-outlet {
     padding-top: 20px;
