@@ -20,6 +20,16 @@ exceptions:
   list_type: simple
   description: "Banner will not show for these categories NAMES. This is case sensitive."
 
+categories:
+  default: ""
+  type: list
+  description: |
+    Banner will only show for these categories. Format: name:target.
+    Accepted targets:
+      all - named category and subcategories (default);
+      no_sub - only the named category;
+      only_sub - only subcategories of the named category.
+
 show_above_site_header:
   default: false
   type: bool
