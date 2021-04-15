@@ -30,7 +30,14 @@ show_below_site_header:
   type: bool
   description: "Display the banner in the below site header connector."
 
-show_above_main_container:
+position:
+  default: above_site_header
+  type: enum
+  description: "Display the banner in the above site header, below site header or above main container connector."
+  choices:
+    - above_site_header
+    - below_site_header
+    - above_main_container
   default: false
   type: bool
   description: "Display the banner in the above main container connector."
