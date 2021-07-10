@@ -72,16 +72,8 @@ export default createWidget("category-header-widget", {
       const hideMobile = !settings.show_mobile && this.site.mobileView;
       const isSubCategory =
         !settings.show_subcategory && category.parentCategory;
-      const hasNoCategoryDescription =
-        settings.hide_if_no_description && !category.description_text;
 
-      if (
-        isTarget &&
-        !isException &&
-        !hasNoCategoryDescription &&
-        !isSubCategory &&
-        !hideMobile
-      ) {
+      if (isTarget && !isException && !isSubCategory && !hideMobile) {
         return h(
           `div.category-title-header.category-banner-${category.slug}`,
           {
