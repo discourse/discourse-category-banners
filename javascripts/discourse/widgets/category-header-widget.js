@@ -92,7 +92,6 @@ export default createWidget("category-header-widget", {
           h("div.category-title-contents", buildCategory(category, this))
         );
       }
-    } else {
     }
   },
 });
