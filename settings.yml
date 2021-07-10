@@ -30,11 +30,6 @@ categories:
       no_sub - only the named category;
       only_sub - only subcategories of the named category.
 
-show_above_site_header:
-  default: false
-  type: bool
-  description: "Display the banner in the above site header connector."
-
 show_below_site_header:
   default: true
   type: bool
