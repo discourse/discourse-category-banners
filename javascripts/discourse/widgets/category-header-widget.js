@@ -82,8 +82,6 @@ export default createWidget("category-header-widget", {
         !isSubCategory &&
         !hideMobile
       ) {
-        document.body.classList.add("category-header");
-
         return h(
           `div.category-title-header.category-banner-${category.slug}`,
           {
@@ -95,7 +93,6 @@ export default createWidget("category-header-widget", {
         );
       }
     } else {
-      document.body.classList.remove("category-header");
     }
   },
 });
