@@ -80,7 +80,7 @@ export default createWidget("category-header-widget", {
       try {
         textContent.push(this.attach("category-icon", { category }));
       } catch {
-        // if widget attaching fails, ignore it as it's probably the missing component
+        // Discourse category icons component is not installed
       }
     }
 
