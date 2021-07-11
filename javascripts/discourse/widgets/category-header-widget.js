@@ -4,35 +4,6 @@ import { iconNode } from "discourse-common/lib/icon-library";
 import { createWidget } from "discourse/widgets/widget";
 import Category from "discourse/models/category";
 
-function buildCategory(category, widget) {
-  const content = [];
-
-  if (category.read_restricted) {
-    content.push(iconNode("lock"));
-  }
-
-  if (settings.show_category_icon) {
-    try {
-      content.push(widget.attach("category-icon", { category }));
-    } catch {
-      // if widget attaching fails, ignore it as it's probably the missing component
-    }
-  }
-
-  content.push(h("h1.category-title", category.name));
-
-  if (settings.show_description) {
-    content.push(
-      h(
-        "div.category-title-description",
-        h("div.cooked", { innerHTML: category.description })
-      )
-    );
-  }
-
-  return content;
-}
-
 export default createWidget("category-header-widget", {
   tagName: "span.discourse-category-banners",
 
@@ -81,9 +52,56 @@ export default createWidget("category-header-widget", {
               style: `--category-background-color: #${category.color}; --category-text-color: #${category.text_color};`,
             },
           },
-          h("div.category-title-contents", buildCategory(category, this))
+          this.buildCategory(category)
         );
       }
     }
+  },
+
+  bannerLogo(category) {
+    if (settings.show_category_logo && category.uploaded_logo) {
+      const logo = h("img.banner-category-logo", {
+        src: category.uploaded_logo.url,
+        height: 150,
+      });
+
+      return h("div.category-banner-logo-wrapper", logo);
+    }
+  },
+
+  bannerText(category) {
+    const textContent = [];
+
+    if (category.read_restricted) {
+      textContent.push(iconNode("lock"));
+    }
+
+    if (settings.show_category_icon) {
+      try {
+        textContent.push(this.attach("category-icon", { category }));
+      } catch {
+        // if widget attaching fails, ignore it as it's probably the missing component
+      }
+    }
+
+    textContent.push(h("h1.category-title", category.name));
+
+    if (settings.show_description) {
+      textContent.push(
+        h(
+          "div.category-title-description",
+          h("div.cooked", { innerHTML: category.description })
+        )
+      );
+    }
+
+    return h("div.category-text-logo-wrapper", textContent);
+  },
+
+  buildCategory(category) {
+    return h("div.category-title-contents", [
+      this.bannerLogo(category),
+      this.bannerText(category),
+    ]);
   },
 });

@@ -10,6 +10,10 @@ show_subcategory:
   default: true
   description: "Show banners for subcategories"
 
+show_category_logo:
+  default: false
+  description: "Show category logo uploded in category settings"
+
 exceptions:
   default: ""
   type: list
