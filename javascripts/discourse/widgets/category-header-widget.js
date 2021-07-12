@@ -49,8 +49,8 @@ export default createWidget("category-header-widget", {
           `div.category-title-header.category-banner-${category.slug}`,
           {
             attributes: {
-              style: `--category-background-color: #${category.color}; --category-text-color: #${category.text_color};`,
-            },
+              style: `--category-background-color: #${category.color}; --category-text-color: #${category.text_color};`
+            }
           },
           this.buildCategory(category)
         );
@@ -62,7 +62,7 @@ export default createWidget("category-header-widget", {
     if (settings.show_category_logo && category.uploaded_logo) {
       const logo = h("img.banner-category-logo", {
         src: category.uploaded_logo.url,
-        height: 150,
+        height: 150
       });
 
       return h("div.category-banner-logo-wrapper", logo);
@@ -99,9 +99,9 @@ export default createWidget("category-header-widget", {
   },
 
   buildCategory(category) {
-    return h("div.category-title-contents", [
-      this.bannerLogo(category),
-      this.bannerText(category),
-    ]);
-  },
+    return h(
+      "div.category-title-contents",
+      h("div.wrap", [this.bannerLogo(category), this.bannerText(category)])
+    );
+  }
 });
