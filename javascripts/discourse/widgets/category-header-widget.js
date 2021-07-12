@@ -100,8 +100,11 @@ export default createWidget("category-header-widget", {
 
   buildCategory(category) {
     return h(
-      "div.category-title-contents",
-      h("div.wrap", [this.bannerLogo(category), this.bannerText(category)])
+      "div.wrap",
+      h("div.category-title-contents", [
+        this.bannerLogo(category),
+        this.bannerText(category)
+      ])
     );
   }
 });
