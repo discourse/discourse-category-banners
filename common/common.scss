@@ -9,13 +9,15 @@ div[class^="category-title-header"] {
     padding: 40px;
 
     .d-icon-lock {
-      height: 1.5em;
-      width: 1.1em;
+      height: 0.75em;
+      width: 0.75em;
       margin-right: 0.25em;
     }
 
     .category-title {
-      display: inline;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .category-icon-widget {

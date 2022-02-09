@@ -7,10 +7,6 @@ import Category from "discourse/models/category";
 function buildCategory(category, widget) {
   const content = [];
 
-  if (category.read_restricted) {
-    content.push(iconNode("lock"));
-  }
-
   if (settings.show_category_icon) {
     try {
       content.push(widget.attach("category-icon", { category }));
@@ -19,7 +15,11 @@ function buildCategory(category, widget) {
     }
   }
 
-  content.push(h("h1.category-title", category.name));
+  let categoryTitle = category.read_restricted
+    ? [iconNode("lock"), category.name]
+    : category.name;
+
+  content.push(h("h1.category-title", categoryTitle));
 
   if (settings.show_description) {
     content.push(
@@ -88,8 +88,8 @@ export default createWidget("category-header-widget", {
           `div.category-title-header.category-banner-${category.slug}`,
           {
             attributes: {
-              style: `background-color: #${category.color}; color: #${category.text_color};`,
-            },
+              style: `background-color: #${category.color}; color: #${category.text_color};`
+            }
           },
           h("div.category-title-contents", buildCategory(category, this))
         );
@@ -97,5 +97,5 @@ export default createWidget("category-header-widget", {
     } else {
       document.body.classList.remove("category-header");
     }
-  },
+  }
 });
