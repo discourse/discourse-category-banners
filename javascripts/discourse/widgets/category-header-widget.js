@@ -44,15 +44,15 @@ export default createWidget("category-header-widget", {
       route.params &&
       route.params.hasOwnProperty("category_slug_path_with_id")
     ) {
-      const categories = settings.categories
-        .split("|")
-        .reduce((categories, item) => {
-          item = item.split(":");
-          if (item[0]) {
-            categories[item[0]] = item[1] || "all";
-          }
-          return categories;
-        }, {});
+      const categories = {};
+
+      settings.categories.split("|").forEach((item) => {
+        item = item.split(":");
+
+        if (item[0]) {
+          categories[item[0]] = item[1] || "all";
+        }
+      });
 
       const category = Category.findBySlugPathWithID(
         route.params.category_slug_path_with_id
@@ -88,8 +88,8 @@ export default createWidget("category-header-widget", {
           `div.category-title-header.category-banner-${category.slug}`,
           {
             attributes: {
-              style: `background-color: #${category.color}; color: #${category.text_color};`
-            }
+              style: `background-color: #${category.color}; color: #${category.text_color};`,
+            },
           },
           h("div.category-title-contents", buildCategory(category, this))
         );
@@ -97,5 +97,5 @@ export default createWidget("category-header-widget", {
     } else {
       document.body.classList.remove("category-header");
     }
-  }
+  },
 });
