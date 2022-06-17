@@ -44,15 +44,15 @@ export default createWidget("category-header-widget", {
       route.params &&
       route.params.hasOwnProperty("category_slug_path_with_id")
     ) {
-      const categories = settings.categories
-        .split("|")
-        .reduce((categories, item) => {
-          item = item.split(":");
-          if (item[0]) {
-            categories[item[0]] = item[1] || "all";
-          }
-          return categories;
-        }, {});
+      const categories = {};
+
+      settings.categories.split("|").forEach((item) => {
+        item = item.split(":");
+
+        if (item[0]) {
+          categories[item[0]] = item[1] || "all";
+        }
+      });
 
       const category = Category.findBySlugPathWithID(
         route.params.category_slug_path_with_id
