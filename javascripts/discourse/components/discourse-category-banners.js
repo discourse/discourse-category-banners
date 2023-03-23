@@ -24,9 +24,7 @@ export default class DiscourseCategoryBanners extends Component {
     const router = this.router;
     const route = router.currentRoute;
     if (
-      route &&
-      route.params &&
-      route.params.hasOwnProperty("category_slug_path_with_id")
+      route?.params?.hasOwnProperty("category_slug_path_with_id")
     ) {
       const categories = {};
 
