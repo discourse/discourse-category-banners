@@ -1,14 +1,15 @@
-<div
-  {{did-insert this.getCategory}}
-  {{did-update this.getCategory}}
-  class="category-title-header
-    {{if this.category (concat 'category-banner-' this.category.slug)}}"
-  style={{if this.category this.safeStyle}}
->
-  {{#if this.category}}
+{{#if this.shouldRender}}
+  <div
+    {{did-insert this.getCategory}}
+    {{did-update this.getCategory this.isVisible}}
+    class="category-title-header
+      {{if this.category (concat 'category-banner-' this.category.slug)}}"
+    style={{if this.category this.safeStyle}}
+  >
+
     <div class="category-title-contents">
       <h1 class="category-title">
-        {{#if (theme-setting "show_category_icon")}}
+        {{#if (and (theme-setting "show_category_icon") this.category)}}
           {{! For compatibility with https://meta.discourse.org/t/category-icons/104683}}
           <CategoryIcon @category={{this.category}} />
         {{/if}}
@@ -24,5 +25,5 @@
         </div>
       {{/if}}
     </div>
-  {{/if}}
-</div>
+  </div>
+{{/if}}

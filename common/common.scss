@@ -1,6 +1,5 @@
 body:not(.category-header) {
-  // hides header based on outcome of shouldShow
-  // this avoids hiding the banners on loading routes
+  // hides banners based on outcome of shouldShow
   .category-header-banner {
     display: none;
   }
