@@ -10,7 +10,6 @@ export default class DiscourseCategoryBanners extends Component {
   @service site;
   @tracked category = null;
   @tracked keepDuringLoadingRoute = false;
-  @tracked shouldShow = false;
 
   get isVisible() {
     if (this.categorySlugPathWithID) {
@@ -108,10 +107,8 @@ export default class DiscourseCategoryBanners extends Component {
       !hideMobile
     ) {
       document.body.classList.add("category-header");
-      this.shouldShow = true;
     } else {
       document.body.classList.remove("category-header");
-      this.shouldShow = false;
     }
   }
 }
