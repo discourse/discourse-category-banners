@@ -9,12 +9,8 @@
     <div class="category-title-contents">
       <h1 class="category-title">
         {{#if (theme-setting "show_category_icon")}}
-          {{#if this.rerenderWidget}}
-            <MountWidget
-              @widget="category-icon"
-              @args={{hash category=this.category}}
-            />
-          {{/if}}
+          {{! For compatibility with https://meta.discourse.org/t/category-icons/104683}}
+          <CategoryIcon @category={{this.category}} />
         {{/if}}
         {{#if this.category.read_restricted}}
           {{d-icon "lock"}}

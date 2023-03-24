@@ -78,18 +78,6 @@ export default class DiscourseCategoryBanners extends Component {
     );
   }
 
-  get rerenderWidget() {
-    // forces the category icon widget to rerender when the category changes
-    const router = this.router;
-    const route = router.currentRoute;
-
-    return (
-      route &&
-      route.params &&
-      route.params.hasOwnProperty("category_slug_path_with_id")
-    );
-  }
-
   @action
   getCategory() {
     const params = this.router.currentRoute.params;
