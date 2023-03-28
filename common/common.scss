@@ -1,3 +1,10 @@
+body:not(.category-header) {
+  // hides banners based on outcome of shouldShow
+  .category-header-banner {
+    display: none;
+  }
+}
+
 div[class^="category-title-header"] {
   display: flex;
   text-align: center;
@@ -21,13 +28,13 @@ div[class^="category-title-header"] {
     }
 
     .category-icon-widget {
-      display: inline;
-
+      display: flex;
       .category-icon {
+        display: flex;
         .d-icon {
-          height: 1.5em;
-          width: 1.5em;
-          margin-right: 0.75em;
+          height: 0.75em;
+          width: 0.75em;
+          margin-right: 0.25em;
         }
       }
     }
@@ -39,11 +46,5 @@ div[class^="category-title-header"] {
       color: inherit;
       text-decoration: underline;
     }
-  }
-}
-
-.category-header {
-  #main-outlet {
-    padding-top: 20px;
   }
 }

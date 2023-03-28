@@ -1,4 +1,4 @@
-# discourse-category-banners
+# Discourse Category Banners
 
 A theme component to add category banners to your Discourse community.
 
