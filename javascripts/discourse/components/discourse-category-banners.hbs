@@ -13,8 +13,6 @@
           {{#if this.hasIconComponent}}
             {{! For compatibility with https://meta.discourse.org/t/category-icons/104683}}
             <CategoryIcon @category={{this.category}} />
-          {{else}}
-            {{this.consoleWarn}}
           {{/if}}
         {{/if}}
         {{#if this.category.read_restricted}}

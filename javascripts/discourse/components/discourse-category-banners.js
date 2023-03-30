@@ -17,12 +17,6 @@ export default class DiscourseCategoryBanners extends Component {
     return owner.hasRegistration("component:category-icon");
   }
 
-  get consoleWarn() {
-    return console.warn(
-      "The category banners component is trying to use the category icons component, but it is not available."
-    );
-  }
-
   get isVisible() {
     if (this.categorySlugPathWithID) {
       this.keepDuringLoadingRoute = true;
