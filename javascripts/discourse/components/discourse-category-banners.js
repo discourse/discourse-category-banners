@@ -4,12 +4,24 @@ import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { htmlSafe } from "@ember/template";
+import { getOwner } from "@ember/application";
 
 export default class DiscourseCategoryBanners extends Component {
   @service router;
   @service site;
   @tracked category = null;
   @tracked keepDuringLoadingRoute = false;
+
+  get hasIconComponent() {
+    return getOwner(this).hasRegistration("component:category-icon");
+  }
+
+  get consoleWarn() {
+    // eslint-disable-next-line no-console
+    return console.warn(
+      "The category banners component is trying to use the category icons component, but it is not available. https://meta.discourse.org/t/category-icons/104683"
+    );
+  }
 
   get isVisible() {
     if (this.categorySlugPathWithID) {

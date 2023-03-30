@@ -18,25 +18,7 @@ div[class^="category-title-header"] {
     .d-icon-lock {
       height: 0.75em;
       width: 0.75em;
-      margin-right: 0.25em;
-    }
-
-    .category-title {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .category-icon-widget {
-      display: flex;
-      .category-icon {
-        display: flex;
-        .d-icon {
-          height: 0.75em;
-          width: 0.75em;
-          margin-right: 0.25em;
-        }
-      }
+      vertical-align: 0;
     }
   }
 
@@ -45,6 +27,26 @@ div[class^="category-title-header"] {
     a:visited {
       color: inherit;
       text-decoration: underline;
+    }
+  }
+
+  // styles that impact the category icons theme component
+
+  .category-icon-widget-wrapper {
+    display: inline-block;
+
+    .category-icon-widget {
+      display: flex;
+      .category-icon {
+        display: flex;
+        @if $override_category_icon_color == "true" {
+          color: currentColor !important; // overrides inline style
+        }
+        .d-icon {
+          height: 0.75em;
+          width: 0.75em;
+        }
+      }
     }
   }
 }
