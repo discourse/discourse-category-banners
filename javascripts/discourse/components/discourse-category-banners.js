@@ -13,8 +13,7 @@ export default class DiscourseCategoryBanners extends Component {
   @tracked keepDuringLoadingRoute = false;
 
   get hasIconComponent() {
-    const owner = getOwner(this);
-    return owner.hasRegistration("component:category-icon");
+    return getOwner(this).hasRegistration("component:category-icon");
   }
 
   get isVisible() {
