@@ -29,23 +29,23 @@ div[class^="category-title-header"] {
       text-decoration: underline;
     }
   }
-}
 
-// styles that impact the category icons theme component
+  // styles that impact the category icons theme component
 
-.banner-category-icon-widget-wrapper {
-  display: inline-block;
+  .category-icon-widget-wrapper {
+    display: inline-block;
 
-  .category-icon-widget {
-    display: flex;
-    .category-icon {
+    .category-icon-widget {
       display: flex;
-      @if $override_category_icon_color == "true" {
-        color: currentColor !important;
-      }
-      .d-icon {
-        height: 0.75em;
-        width: 0.75em;
+      .category-icon {
+        display: flex;
+        @if $override_category_icon_color == "true" {
+          color: currentColor !important;
+        }
+        .d-icon {
+          height: 0.75em;
+          width: 0.75em;
+        }
       }
     }
   }
