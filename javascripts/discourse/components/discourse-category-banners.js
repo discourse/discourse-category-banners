@@ -16,6 +16,13 @@ export default class DiscourseCategoryBanners extends Component {
     return getOwner(this).hasRegistration("component:category-icon");
   }
 
+  get consoleWarn() {
+    // eslint-disable-next-line no-console
+    return console.warn(
+      "The category banners component is trying to use the category icons component, but it is not installed. https://meta.discourse.org/t/category-icons/104683"
+    );
+  }
+
   get isVisible() {
     if (this.categorySlugPathWithID) {
       this.keepDuringLoadingRoute = true;
