@@ -40,7 +40,7 @@ div[class^="category-title-header"] {
       .category-icon {
         display: flex;
         @if $override_category_icon_color == "true" {
-          color: currentColor !important;
+          color: currentColor !important; // overrides inline style
         }
         .d-icon {
           height: 0.75em;
