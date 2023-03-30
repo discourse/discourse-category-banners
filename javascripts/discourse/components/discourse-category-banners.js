@@ -19,7 +19,7 @@ export default class DiscourseCategoryBanners extends Component {
   get consoleWarn() {
     // eslint-disable-next-line no-console
     return console.warn(
-      "The category banners component is trying to use the category icons component, but it is not installed. https://meta.discourse.org/t/category-icons/104683"
+      "The category banners component is trying to use the category icons component, but it is not available. https://meta.discourse.org/t/category-icons/104683"
     );
   }
 
