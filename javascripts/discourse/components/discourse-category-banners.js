@@ -4,12 +4,24 @@ import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { inject as service } from "@ember/service";
 import { htmlSafe } from "@ember/template";
+import { getOwner } from "@ember/application";
 
 export default class DiscourseCategoryBanners extends Component {
   @service router;
   @service site;
   @tracked category = null;
   @tracked keepDuringLoadingRoute = false;
+
+  get hasIconComponent() {
+    const owner = getOwner(this);
+    return owner.hasRegistration("component:category-icon");
+  }
+
+  get consoleWarn() {
+    return console.warn(
+      "The category banners component is trying to use the category icons component, but it is not available."
+    );
+  }
 
   get isVisible() {
     if (this.categorySlugPathWithID) {
