@@ -45,7 +45,8 @@ export default class DiscourseCategoryBanners extends Component {
     if (this.isVisible && this.keepDuringLoadingRoute) {
       return true;
     } else {
-      return document.body.classList.remove("category-header");
+      document.body.classList.remove("category-header");
+      return false;
     }
   }
 
