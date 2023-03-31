@@ -42,7 +42,11 @@ export default class DiscourseCategoryBanners extends Component {
   }
 
   get shouldRender() {
-    return this.isVisible && this.keepDuringLoadingRoute;
+    if (this.isVisible && this.keepDuringLoadingRoute) {
+      return true;
+    } else {
+      return document.body.classList.remove("category-header");
+    }
   }
 
   get safeStyle() {
