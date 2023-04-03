@@ -38,7 +38,13 @@ export default class DiscourseCategoryBanners extends Component {
   }
 
   get categorySlugPathWithID() {
-    return this.router?.currentRoute?.params?.category_slug_path_with_id;
+    // when a category is set to Default List Filter: no subcategories
+    // params.category_slug_path_with_id returns undefined
+    // and attributes.category_slug_path_with_id returns the correct value
+    return (
+      this.router?.currentRoute?.params?.category_slug_path_with_id ||
+      this.router?.currentRoute?.attributes?.category_slug_path_with_id
+    );
   }
 
   get shouldRender() {
