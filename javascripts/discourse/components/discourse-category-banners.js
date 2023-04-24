@@ -9,6 +9,7 @@ import { getOwner } from "@ember/application";
 export default class DiscourseCategoryBanners extends Component {
   @service router;
   @service site;
+  @service categoryBannerPresence;
   @tracked category = null;
   @tracked keepDuringLoadingRoute = false;
 
@@ -16,43 +17,37 @@ export default class DiscourseCategoryBanners extends Component {
     return getOwner(this).hasRegistration("component:category-icon");
   }
 
-  get consoleWarn() {
-    // eslint-disable-next-line no-console
-    return console.warn(
-      "The category banners component is trying to use the category icons component, but it is not available. https://meta.discourse.org/t/category-icons/104683"
-    );
-  }
-
-  get isVisible() {
-    if (this.categorySlugPathWithID) {
-      this.keepDuringLoadingRoute = true;
-      return true;
-    } else {
-      if (this.router.currentRoute.name.includes("loading")) {
-        return this.keepDuringLoadingRoute;
-      } else {
-        this.keepDuringLoadingRoute = false;
-        return false;
-      }
-    }
-  }
-
   get categorySlugPathWithID() {
     return this.router?.currentRoute?.params?.category_slug_path_with_id;
   }
 
   get shouldRender() {
-    if (this.isVisible && this.keepDuringLoadingRoute) {
+    return (
+      this.categorySlugPathWithID ||
+      (this.keepDuringLoadingRoute &&
+        this.router.currentRoute.name.includes("loading"))
+    );
+  }
+
+  get isVisible() {
+    if (this.categorySlugPathWithID) {
       return true;
-    } else {
-      document.body.classList.remove("category-header");
-      return false;
+    } else if (this.router.currentRoute.name.includes("loading")) {
+      return this.keepDuringLoadingRoute;
     }
+    return false;
   }
 
   get safeStyle() {
     return htmlSafe(
       `background-color: #${this.category.color}; color: #${this.category.text_color};`
+    );
+  }
+
+  get consoleWarn() {
+    // eslint-disable-next-line no-console
+    return console.warn(
+      "The category banners component is trying to use the category icons component, but it is not available. https://meta.discourse.org/t/category-icons/104683"
     );
   }
 
@@ -78,8 +73,8 @@ export default class DiscourseCategoryBanners extends Component {
   }
 
   #checkTargetCategory(categories) {
-    const currentCategoryName = this.category.name.toLowerCase();
-    const parentCategoryName = this.category.parentCategory
+    const currentCategoryName = this.category?.name.toLowerCase();
+    const parentCategoryName = this.category?.parentCategory
       ? this.category.parentCategory.name.toLowerCase()
       : null;
 
@@ -87,10 +82,17 @@ export default class DiscourseCategoryBanners extends Component {
       Object.keys(categories).length === 0 ||
       categories[currentCategoryName] === "all" ||
       categories[currentCategoryName] === "no_sub" ||
-      (this.category.parentCategory &&
+      (this.category?.parentCategory &&
         (categories[parentCategoryName] === "all" ||
           categories[parentCategoryName] === "only_sub"))
     );
+  }
+
+  @action
+  teardownComponent() {
+    document.body.classList.remove("category-header");
+    this.category = null;
+    this.categoryBannerPresence.isPresent = false;
   }
 
   @action
@@ -103,18 +105,23 @@ export default class DiscourseCategoryBanners extends Component {
       this.category = Category.findBySlugPathWithID(
         this.categorySlugPathWithID
       );
+      this.categoryBannerPresence.isPresent = true;
+      this.keepDuringLoadingRoute = true;
+    } else {
+      if (!this.router.currentRoute.name.includes("loading")) {
+        return (this.keepDuringLoadingRoute = false);
+      }
     }
 
     const categories = this.#parseCategories(settings.categories);
     const exceptions = this.#parseExceptions(settings.exceptions);
-
-    const isException = exceptions.includes(this.category.name.toLowerCase());
+    const isException = exceptions.includes(this.category?.name.toLowerCase());
     const isTarget = this.#checkTargetCategory(categories);
     const hideMobile = !settings.show_mobile && this.site.mobileView;
     const isSubCategory =
-      !settings.show_subcategory && this.category.parentCategory;
+      !settings.show_subcategory && this.category?.parentCategory;
     const hasNoCategoryDescription =
-      settings.hide_if_no_description && !this.category.description_text;
+      settings.hide_if_no_description && !this.category?.description_text;
 
     if (
       isTarget &&
@@ -124,8 +131,10 @@ export default class DiscourseCategoryBanners extends Component {
       !hideMobile
     ) {
       document.body.classList.add("category-header");
+      this.categoryBannerPresence.isPresent = true;
     } else {
       document.body.classList.remove("category-header");
+      this.categoryBannerPresence.isPresent = false;
     }
   }
 }
