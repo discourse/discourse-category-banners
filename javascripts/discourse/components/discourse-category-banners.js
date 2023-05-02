@@ -131,7 +131,6 @@ export default class DiscourseCategoryBanners extends Component {
       !hideMobile
     ) {
       document.body.classList.add("category-header");
-      this.categoryBannerPresence.setTo(true);
     } else {
       document.body.classList.remove("category-header");
       this.categoryBannerPresence.setTo(false);
