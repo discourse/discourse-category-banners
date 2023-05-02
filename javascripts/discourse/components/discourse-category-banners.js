@@ -92,7 +92,7 @@ export default class DiscourseCategoryBanners extends Component {
   teardownComponent() {
     document.body.classList.remove("category-header");
     this.category = null;
-    this.categoryBannerPresence.isPresent = false;
+    this.categoryBannerPresence.setTo(false);
   }
 
   @action
@@ -105,7 +105,7 @@ export default class DiscourseCategoryBanners extends Component {
       this.category = Category.findBySlugPathWithID(
         this.categorySlugPathWithID
       );
-      this.categoryBannerPresence.isPresent = true;
+      this.categoryBannerPresence.setTo(true);
       this.keepDuringLoadingRoute = true;
     } else {
       if (!this.router.currentRoute.name.includes("loading")) {
@@ -131,10 +131,10 @@ export default class DiscourseCategoryBanners extends Component {
       !hideMobile
     ) {
       document.body.classList.add("category-header");
-      this.categoryBannerPresence.isPresent = true;
+      this.categoryBannerPresence.setTo(true);
     } else {
       document.body.classList.remove("category-header");
-      this.categoryBannerPresence.isPresent = false;
+      this.categoryBannerPresence.setTo(false);
     }
   }
 }
