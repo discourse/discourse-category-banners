@@ -50,3 +50,10 @@ div[class^="category-title-header"] {
     }
   }
 }
+
+@if $plugin_outlet == "header-list-container-bottom" {
+  #header-list-area {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

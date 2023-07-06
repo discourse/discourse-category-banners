@@ -32,15 +32,15 @@ categories:
      <li> only_sub - only subcategories of the named category.
     </ul>
 
-show_above_site_header:
-  default: false
-  type: bool
-  description: "Display the banner in the above site header connector."
-
-show_below_site_header:
-  default: true
-  type: bool
-  description: "Display the banner in the below site header connector."
+plugin_outlet:
+  default: "below-site-header"
+  type: "enum"
+  choices:
+    - "below-site-header"
+    - "above-site-header"
+    - "above-main-container"
+    - "header-list-container-bottom"
+  description: "Changes the position of the banner on the page."
 
 show_category_icon:
   default: false
