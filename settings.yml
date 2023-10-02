@@ -42,6 +42,10 @@ plugin_outlet:
     - "header-list-container-bottom"
   description: "Changes the position of the banner on the page."
 
+show_category_logo:
+  default: false
+  description: Show category logo from a category's settings
+
 show_category_icon:
   default: false
   description: Show category icon from the <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse Category Icons component</a>
