@@ -51,6 +51,10 @@ export default class DiscourseCategoryBanners extends Component {
     );
   }
 
+  get displayCategoryDescription() {
+    return settings.show_description && this.category.description?.length > 0;
+  }
+
   #parseCategories(categoriesStr) {
     const categories = {};
     categoriesStr.split("|").forEach((item) => {
@@ -117,9 +121,9 @@ export default class DiscourseCategoryBanners extends Component {
     const exceptions = this.#parseExceptions(settings.exceptions);
     const isException = exceptions.includes(this.category?.name.toLowerCase());
     const isTarget = this.#checkTargetCategory(categories);
-    const hideMobile = !settings.show_mobile && this.site.mobileView;
-    const isSubCategory =
-      !settings.show_subcategory && this.category?.parentCategory;
+    const hideMobile = this.site.mobileView && !settings.show_mobile;
+    const hideSubCategory =
+      this.category?.parentCategory && !settings.show_subcategory;
     const hasNoCategoryDescription =
       settings.hide_if_no_description && !this.category?.description_text;
 
@@ -127,7 +131,7 @@ export default class DiscourseCategoryBanners extends Component {
       isTarget &&
       !isException &&
       !hasNoCategoryDescription &&
-      !isSubCategory &&
+      !hideSubCategory &&
       !hideMobile
     ) {
       document.body.classList.add("category-header");
