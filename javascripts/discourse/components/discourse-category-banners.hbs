@@ -9,6 +9,9 @@
   >
     {{#if this.category}}
       <div class="category-title-contents">
+        {{#if (and (theme-setting "show_category_logo") this.category.uploaded_logo.url)}}
+          <CategoryLogo @category={{this.category}} />
+        {{/if}}
         <h1 class="category-title">
           {{#if (and (theme-setting "show_category_icon") this.category)}}
             {{#if this.hasIconComponent}}
