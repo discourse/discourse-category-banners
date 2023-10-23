@@ -24,9 +24,12 @@
           {{this.category.name}}
           <PluginOutlet @name="category-banners-after-title" />
         </h1>
-        {{#if (theme-setting "show_description")}}
+
+        {{#if this.displayCategoryDescription}}
           <div class="category-title-description">
-            <div class="cooked" innerHTML={{this.category.description}}></div>
+            <div class="cooked">
+              {{this.category.description}}
+            </div>
           </div>
         {{/if}}
       </div>

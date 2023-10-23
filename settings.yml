@@ -41,6 +41,7 @@ plugin_outlet:
     - "above-main-container"
     - "header-list-container-bottom"
   description: "Changes the position of the banner on the page."
+  refresh: true
 
 show_category_icon:
   default: false

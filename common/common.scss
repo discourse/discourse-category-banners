@@ -1,6 +1,6 @@
 body:not(.category-header) {
   // hides banners based on outcome of shouldShow
-  .category-header-banner {
+  .category-title-header {
     display: none;
   }
 }
