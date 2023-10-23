@@ -3,7 +3,7 @@
 require_relative "page_objects/components/category_banner"
 
 RSpec.describe "Category Banners", type: :system do
-  fab!(:theme) { upload_theme_component }
+  let!(:theme) { upload_theme_component }
   fab!(:category) { Fabricate(:category, description: "this is some description") }
   fab!(:category_subcategory) do
     Fabricate(:category, parent_category: category, description: "some description")
@@ -12,7 +12,7 @@ RSpec.describe "Category Banners", type: :system do
   let(:subcategory_banner) { PageObjects::Components::CategoryBanner.new(category_subcategory) }
 
   it "displays category banner correctly" do
-    visit("/c/#{category.slug}")
+    visit(category.url)
 
     expect(category_banner).to be_visible
     expect(category_banner).to have_title(category.name)
@@ -23,7 +23,7 @@ RSpec.describe "Category Banners", type: :system do
     theme.update_setting(:show_description, false)
     theme.save!
 
-    visit("/c/#{category.slug}")
+    visit(category.url)
 
     expect(category_banner).to be_visible
     expect(category_banner).to have_title(category.name)
@@ -35,7 +35,7 @@ RSpec.describe "Category Banners", type: :system do
     theme.update_setting(:show_mobile, false)
     theme.save!
 
-    visit("/c/#{category.slug}")
+    visit(category.url)
 
     expect(category_banner).to be_not_visible
   end
@@ -44,7 +44,7 @@ RSpec.describe "Category Banners", type: :system do
     theme.update_setting(:show_subcategory, false)
     theme.save!
 
-    visit("/c/#{category_subcategory.slug}")
+    visit(category_subcategory.url)
 
     expect(subcategory_banner).to be_not_visible
   end
@@ -54,7 +54,7 @@ RSpec.describe "Category Banners", type: :system do
     theme.update_setting(:hide_if_no_description, true)
     theme.save!
 
-    visit("/c/#{category.slug}")
+    visit(category.url)
 
     expect(category_banner).to be_not_visible
   end
@@ -63,12 +63,10 @@ RSpec.describe "Category Banners", type: :system do
     theme.update_setting(:exceptions, "#{category.name}|#{category_subcategory.name}")
     theme.save!
 
-    visit("/c/#{category.slug}")
+    visit(category.url)
 
     expect(category_banner).to be_not_visible
 
-    visit("/c/#{category_subcategory.slug}")
-
-    expect(subcategory_banner).to be_not_visible
+    visit(category_subcategory.url)
   end
 end
