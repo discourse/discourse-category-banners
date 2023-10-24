@@ -28,7 +28,7 @@
         {{#if this.displayCategoryDescription}}
           <div class="category-title-description">
             <div class="cooked">
-              {{this.category.description}}
+              {{html-safe this.category.description}}
             </div>
           </div>
         {{/if}}
