@@ -4,7 +4,7 @@ require_relative "page_objects/components/category_banner"
 
 RSpec.describe "Category Banners", type: :system do
   let!(:theme) { upload_theme_component }
-  fab!(:category) { Fabricate(:category, description: "this is some description") }
+  fab!(:category) { Fabricate(:category, description: "<p>this is some description</p>") }
   fab!(:category_subcategory) do
     Fabricate(:category, parent_category: category, description: "some description")
   end
@@ -16,7 +16,7 @@ RSpec.describe "Category Banners", type: :system do
 
     expect(category_banner).to be_visible
     expect(category_banner).to have_title(category.name)
-    expect(category_banner).to have_description(category.description)
+    expect(category_banner).to have_description("this is some description")
   end
 
   it "does not display the category description when `show_description` setting is false" do
