@@ -14,6 +14,17 @@ hide_if_no_description:
   default: true
   description: "Hide banners if category description is not set"
 
+show_category_logo:
+  default: false
+  description: "Displays the category logo as set in the category's settings"
+
+align_text:
+  default: center
+  choices:
+    - center
+    - left
+    - right
+
 exceptions:
   default: ""
   type: list

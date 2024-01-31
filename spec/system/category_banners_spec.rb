@@ -6,7 +6,7 @@ RSpec.describe "Category Banners", type: :system do
   let!(:theme) { upload_theme_component }
   fab!(:category) { Fabricate(:category, description: "<p>this is some description</p>") }
   fab!(:category_subcategory) do
-    Fabricate(:category, parent_category: category, description: "some description")
+    Fabricate(:category, parent_category: category, description: "some description", uploaded_logo: Fabricate(:upload))
   end
   let(:category_banner) { PageObjects::Components::CategoryBanner.new(category) }
   let(:subcategory_banner) { PageObjects::Components::CategoryBanner.new(category_subcategory) }
@@ -68,5 +68,23 @@ RSpec.describe "Category Banners", type: :system do
     expect(category_banner).to be_not_visible
 
     visit(category_subcategory.url)
+  end
+
+  it "displays a category logo when show_category_logo is true" do
+    theme.update_setting(:show_category_logo, true)
+    theme.save!
+  
+    visit(category_subcategory.url)
+  
+    expect(subcategory_banner).to have_logo
+  end
+
+  it "does not display a category logo when show_category_logo is false" do
+    theme.update_setting(:show_category_logo, false)
+    theme.save!
+  
+    visit(category_subcategory.url)
+  
+    expect(subcategory_banner).to have_no_logo
   end
 end

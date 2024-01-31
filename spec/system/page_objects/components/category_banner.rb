@@ -30,6 +30,14 @@ module PageObjects
         has_no_css?("#{category_banner_selector} .category-title-description")
       end
 
+      def has_logo?
+        has_css?("#{category_banner_selector} .category-logo img[src]")
+      end
+
+      def has_no_logo?
+        has_no_css?("#{category_banner_selector} .category-logo img[src]")
+      end
+
       private
 
       def category_banner_selector
