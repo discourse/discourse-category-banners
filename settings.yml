@@ -20,6 +20,7 @@ show_category_logo:
 
 align_text:
   default: center
+  type: "enum"
   choices:
     - center
     - left
