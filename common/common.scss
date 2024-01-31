@@ -7,9 +7,14 @@ body:not(.category-header) {
 
 div[class^="category-title-header"] {
   display: flex;
-  text-align: center;
   width: 100%;
   justify-content: center;
+  @if $align_text == "center" {
+    text-align: center;
+  }
+  @if $align_text == "right" {
+    text-align: right;
+  }
 
   .category-title-contents {
     max-width: 500px;
@@ -48,6 +53,14 @@ div[class^="category-title-header"] {
         }
       }
     }
+  }
+}
+
+.category-title-contents .category-logo {
+  margin: 0 1em 0 0;
+  @include breakpoint(tablet) {
+    display: block;
+    float: none;
   }
 }
 
