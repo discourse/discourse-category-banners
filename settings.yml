@@ -15,7 +15,7 @@ hide_if_no_description:
   description: "Hide banners if category description is not set"
 
 show_category_logo:
-  default: true
+  default: false
   description: "Displays the category logo as set in the category's settings"
 
 align_text:
