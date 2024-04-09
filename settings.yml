@@ -1,22 +1,17 @@
 show_description:
   default: true
-  description: 'Show description from "About This Category" post'
 
 show_mobile:
   default: true
-  description: "Show banners on mobile"
 
 show_subcategory:
   default: true
-  description: "Show banners for subcategories"
 
 hide_if_no_description:
   default: true
-  description: "Hide banners if category description is not set"
 
 show_category_logo:
   default: false
-  description: "Displays the category logo as set in the category's settings"
 
 align_text:
   default: center
@@ -30,7 +25,6 @@ exceptions:
   default: ""
   type: list
   list_type: simple
-  description: "Banner will not show for these category NAMES."
 
 categories:
   default: ""
@@ -52,13 +46,10 @@ plugin_outlet:
     - "above-site-header"
     - "above-main-container"
     - "header-list-container-bottom"
-  description: "Changes the position of the banner on the page."
   refresh: true
 
 show_category_icon:
   default: false
-  description: Show category icon from the <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse Category Icons component</a>
 
 override_category_icon_color:
   default: false
-  description: When the category icons are used, enabling this will make the icon match the banner text color
