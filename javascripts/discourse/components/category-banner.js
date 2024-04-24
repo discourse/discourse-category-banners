@@ -55,20 +55,6 @@ export default class DiscourseCategoryBanners extends Component {
     return settings.show_description && this.category.description?.length > 0;
   }
 
-  #parseCategories(categoriesStr) {
-    const categories = {};
-    categoriesStr.split("|").forEach((item) => {
-      item = item.split(":");
-
-      if (item[0]) {
-        categories[item[0].toLowerCase()] = item[1]
-          ? item[1].toLowerCase()
-          : "all";
-      }
-    });
-    return categories;
-  }
-
   #parseExceptions(exceptionsStr) {
     return exceptionsStr
       .split("|")
@@ -76,20 +62,41 @@ export default class DiscourseCategoryBanners extends Component {
       .map((value) => value.toLowerCase());
   }
 
-  #checkTargetCategory(categories) {
-    const currentCategoryName = this.category?.name.toLowerCase();
-    const parentCategoryName = this.category?.parentCategory
-      ? this.category.parentCategory.name.toLowerCase()
-      : null;
+  #checkTargetCategory() {
+    if (settings.categories.length === 0) {
+      return true;
+    }
 
-    return (
-      Object.keys(categories).length === 0 ||
-      categories[currentCategoryName] === "all" ||
-      categories[currentCategoryName] === "no_sub" ||
-      (this.category?.parentCategory &&
-        (categories[parentCategoryName] === "all" ||
-          categories[parentCategoryName] === "only_sub"))
-    );
+    const currentCategoryId = this.category?.id;
+
+    const activeCategory = settings.categories.find((category) => {
+      return category.category_id[0] === currentCategoryId;
+    });
+
+    if (
+      activeCategory &&
+      (activeCategory.target === "all" || activeCategory.target === "no_sub")
+    ) {
+      return true;
+    }
+
+    const parentCategoryId = this.category?.parentCategory?.id;
+
+    if (parentCategoryId) {
+      const activeParentCategory = settings.categories.find((category) => {
+        return category.category_id[0] === parentCategoryId;
+      });
+
+      if (
+        activeParentCategory &&
+        (activeParentCategory.target === "all" ||
+          activeParentCategory.target === "only_sub")
+      ) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   @action
@@ -117,10 +124,9 @@ export default class DiscourseCategoryBanners extends Component {
       }
     }
 
-    const categories = this.#parseCategories(settings.categories);
     const exceptions = this.#parseExceptions(settings.exceptions);
     const isException = exceptions.includes(this.category?.name.toLowerCase());
-    const isTarget = this.#checkTargetCategory(categories);
+    const isTarget = this.#checkTargetCategory();
     const hideMobile = this.site.mobileView && !settings.show_mobile;
     const hideSubCategory =
       this.category?.parentCategory && !settings.show_subcategory;

@@ -26,7 +26,7 @@ RSpec.describe "Category Banners", type: :system do
 
   context "when `categories` setting has been set" do
     it "displays category banner for category and its subcategory when target is set to `all`" do
-      theme.update_setting(:categories, "#{category.name}:all")
+      theme.update_setting(:categories, [{ category_id: [category.id], target: "all" }])
       theme.save!
 
       visit(category.url)
@@ -39,7 +39,7 @@ RSpec.describe "Category Banners", type: :system do
     end
 
     it "displays category banner only for root category when target is set to `no_sub`" do
-      theme.update_setting(:categories, "#{category.name}:no_sub")
+      theme.update_setting(:categories, [{ category_id: [category.id], target: "no_sub" }])
       theme.save!
 
       visit(category.url)
@@ -52,7 +52,7 @@ RSpec.describe "Category Banners", type: :system do
     end
 
     it "displays category banner only for sub categories when target is set to `only_sub`" do
-      theme.update_setting(:categories, "#{category.name}:only_sub")
+      theme.update_setting(:categories, [{ category_id: [category.id], target: "only_sub" }])
       theme.save!
 
       visit(category.url)
