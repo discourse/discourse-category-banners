@@ -27,16 +27,24 @@ exceptions:
   list_type: simple
 
 categories:
-  default: ""
-  type: list
-  description: |
-    Banner will only show for these categories. Format as <code>name:target</code> (e.g., <code>staff:all</code>).
-    Accepted targets:
-    <ul>
-     <li> all - named category and subcategories (default);
-     <li> no_sub - only the named category;
-     <li> only_sub - only subcategories of the named category.
-    </ul>
+  type: objects
+  default: []
+  schema:
+    name: category
+    identifier: category_id
+    properties:
+      category_id:
+        type: categories
+        required: true
+        validations:
+          max: 1
+      target:
+        type: enum
+        default: all
+        choices:
+          - all
+          - no_sub
+          - only_sub
 
 plugin_outlet:
   default: "below-site-header"
