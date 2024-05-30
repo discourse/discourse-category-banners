@@ -61,6 +61,11 @@ div[class^="category-title-header"] {
       color: currentColor;
       text-decoration: underline;
     }
+
+    a.mention {
+      color: var(--primary);
+      text-decoration: none;
+    }
   }
 
   // styles that impact the category icons theme component
