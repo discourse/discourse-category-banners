@@ -58,7 +58,7 @@ div[class^="category-title-header"] {
   .category-title-description {
     a,
     a:visited {
-      color: var(--primary);
+      color: currentColor;
       text-decoration: underline;
     }
   }
