@@ -67,6 +67,10 @@ div[class^="category-title-header"] {
       color: var(--primary);
       text-decoration: none;
     }
+
+    span.mention {
+      color: inherit;
+    }
   }
 
   // styles that impact the category icons theme component
