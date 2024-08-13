@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 ar:
+  theme_metadata:
+    settings:
+      show_description: 'إظهار الوصف من المنشور "نبذة عن هذه الفئة"'
+      show_mobile: 'عرض البانرات على الجوَّال'
+      show_subcategory: 'عرض البانرات للفئات الفرعية'
+      hide_if_no_description: 'إخفاء البانرات إذا لم يتم تعيين وصف للفئة'
+      show_category_logo: 'عرض شعار الفئة'
+      exceptions: "لن يتم عرض البانر لأسماء هذه الفئات"
+      categories:
+        description: الفئات التي سيتم عرض بانر لها
+        schema:
+          properties:
+            category_id:
+              label: الفئة
+              description: "الفئة التي سيتم عرض بانر لها"
+            target:
+              label: الهدف
+              description: |
+                all - سيتم عرض البانر للفئة المحدَّدة وفئاتها الفرعية
+                no_sub - سيتم عرض البانر للفئة المحدَّدة فقط
+                only_sub - سيتم عرض البانر للفئات الفرعية للفئة المحدَّدة فقط
+      plugin_outlet: "يغيِّر موضع البانر على الصفحة"
+      show_category_icon: عرض أيقونة الفئة من <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">مكوِّن أيقونات فئات Discourse</a>
+      override_category_icon_color: عند استخدام أيقونات الفئة، سيؤدي تفعيل هذا الإعداد إلى جعل الأيقونة تتطابق مع لون نص البانر

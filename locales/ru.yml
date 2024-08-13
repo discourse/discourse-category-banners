@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 ru:
+  theme_metadata:
+    settings:
+      show_description: 'Показывает описание из публикации «Об этой категории»'
+      show_mobile: 'Показывает баннеры на мобильных устройствах'
+      show_subcategory: 'Показывает баннеры для подкатегорий'
+      hide_if_no_description: 'Скрывает баннеры, если описание категории не задано'
+      show_category_logo: 'Показывает логотип категории'
+      exceptions: "Баннер не будет отображаться для этих НАЗВАНИЙ категорий"
+      categories:
+        description: Категории, для которых нужно показать баннер
+        schema:
+          properties:
+            category_id:
+              label: Категория
+              description: "Категория, для которой нужно показать баннер"
+            target:
+              label: Target
+              description: |
+                all — баннер будет показан для выбранной категории и ее подкатегорий
+                no_sub — баннер будет показан только для выбранной категории
+                only_sub — баннер будет показан только для подкатегорий выбранной категории
+      plugin_outlet: "Изменяет положение баннера на странице"
+      show_category_icon: Показывает значок категории из компонента <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse Category Icons</a>
+      override_category_icon_color: При использовании значков категорий включение этого параметра приведет к тому, что цвет значка будет соответствовать цвету текста баннера

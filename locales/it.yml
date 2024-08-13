@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 it:
+  theme_metadata:
+    settings:
+      show_description: 'Mostra la descrizione dal post "Informazioni su questa categoria".'
+      show_mobile: 'Mostra banner su dispositivi mobili'
+      show_subcategory: 'Mostra banner per le sottocategorie'
+      hide_if_no_description: 'Nascondi i banner se la descrizione della categoria non è impostata'
+      show_category_logo: 'Mostra il logo della categoria'
+      exceptions: "Il banner non verrà visualizzato per questi NOMI di categoria"
+      categories:
+        description: Categorie per le quali mostrare un banner
+        schema:
+          properties:
+            category_id:
+              label: Categoria
+              description: "Categoria per la quale mostrare un banner"
+            target:
+              label: Bersaglio
+              description: |
+                all - Il banner verrà visualizzato per la categoria selezionata e le relative sottocategorie
+                no_sub - Il banner verrà visualizzato solo per la categoria selezionata
+                only_sub - Il banner verrà visualizzato solo per le sottocategorie della categoria selezionata
+      plugin_outlet: "Cambia la posizione del banner sulla pagina"
+      show_category_icon: Mostra l'icona della categoria dal <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">componente Icone delle categorie di Discourse</a>
+      override_category_icon_color: Quando vengono utilizzate le icone delle categorie, abilitando questa opzione l'icona corrisponderà al colore del testo del banner

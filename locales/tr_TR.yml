@@ -8,11 +8,11 @@ tr_TR:
   theme_metadata:
     settings:
       show_description: '"Bu Kategori Hakkında" gönderisindeki açıklamayı göster'
-      show_mobile: 'Mobil cihazlarda bannerları göster'
-      show_subcategory: 'Alt kategoriler için bannerları göster'
+      show_mobile: 'Mobil cihazlarda banner''ları göster'
+      show_subcategory: 'Alt kategoriler için banner''ları göster'
       hide_if_no_description: 'Kategori açıklaması ayarlanmamışsa banner''ları gizle'
       show_category_logo: 'Kategori logosunu göster'
-      exceptions: "Bu kategori İSİMLERİ için banner gösterilmeyecek"
+      exceptions: "Bu kategori İSİMLERİ için banner gösterilmez"
       categories:
         description: Banner gösterilecek kategoriler
         schema:
@@ -23,9 +23,9 @@ tr_TR:
             target:
               label: Hedef
               description: |
-                all - Banner seçilen kategori ve alt kategorileri için gösterilecek
-                no_sub - Banner sadece seçilen kategori için gösterilecek
-                only_sub - Banner sadece seçilen kategorinin alt kategorileri için gösterilecek
+                all - Banner seçilen kategori ve alt kategorileri için gösterilir
+                no_sub - Banner sadece seçilen kategori için gösterilir
+                only_sub - Banner sadece seçilen kategorinin alt kategorileri için gösterilir
       plugin_outlet: "Banner'ın sayfadaki konumunu değiştirir"
       show_category_icon: <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse Kategori Simgeleri bileşeninden</a> kategori simgesini göster
-      override_category_icon_color: Kategori simgeleri kullanıldığında, bunu etkinleştirmek simgenin afiş metni rengiyle eşleşmesini sağlayacaktır
+      override_category_icon_color: Kategori simgeleri kullanıldığında, bunu etkinleştirmek simgenin afiş metni rengiyle eşleşmesini sağlar

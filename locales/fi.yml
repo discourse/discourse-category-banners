@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 fi:
+  theme_metadata:
+    settings:
+      show_description: 'Näytä kuvaus "Tietoja tästä alueesta" -viestistä'
+      show_mobile: 'Näytä bannerit mobiililaitteissa'
+      show_subcategory: 'Näytä ala-alueiden bannerit'
+      hide_if_no_description: 'Piilota bannerit, jos alueen kuvausta ei ole asetettu'
+      show_category_logo: 'Näytä alueen logo'
+      exceptions: "Banneria ei näytetä näille alueiden NIMILLE"
+      categories:
+        description: Alueet, joissa banneri näytetään
+        schema:
+          properties:
+            category_id:
+              label: Alue
+              description: "Alue, joissa banneri näytetään"
+            target:
+              label: Kohde
+              description: |
+                all – Banneri näytetään valitulle alueelle ja sen ala-alueille
+                no_sub – Banneri näytetään vain valitulle alueelle
+                only_sub – Banneri näytetään vain valitun alueen ala-alueilla
+      plugin_outlet: "Muuttaa bannerin sijaintia sivulla"
+      show_category_icon: Näytä alueen kuvake <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discoursen alueiden kuvakkeet -komponentista</a>
+      override_category_icon_color: Kun alueiden kuvakkeita käytetään, kuvake vastaa bannerin tekstin väriä, kun tämä otetaan käyttöön
