@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 fr:
+  theme_metadata:
+    settings:
+      show_description: 'Afficher la description de la publication « À propos de cette catégorie »'
+      show_mobile: 'Afficher les bannières sur mobile'
+      show_subcategory: 'Afficher les bannières pour les sous-catégories'
+      hide_if_no_description: 'Masquer les bannières si la description de la catégorie n''est pas définie'
+      show_category_logo: 'Afficher le logo de la catégorie'
+      exceptions: "La bannière ne s'affichera pas pour ces NOMS de catégorie"
+      categories:
+        description: Catégories pour lesquelles afficher une bannière
+        schema:
+          properties:
+            category_id:
+              label: Catégorie
+              description: "Catégorie pour laquelle afficher une bannière"
+            target:
+              label: Cible
+              description: |
+                all - La bannière s'affichera pour la catégorie sélectionnée et ses sous-catégories
+                no_sub - La bannière s'affichera uniquement pour la catégorie sélectionnée
+                only_sub - La bannière s'affichera uniquement pour les sous-catégories de la catégorie sélectionnée
+      plugin_outlet: "Modifie la position de la bannière sur la page"
+      show_category_icon: Afficher l'icône de catégorie du composant <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Icônes de catégorie de Discourse</a>
+      override_category_icon_color: Lorsque les icônes de catégorie sont utilisées, l'activation de cette option fera correspondre l'icône à la couleur du texte de la bannière.

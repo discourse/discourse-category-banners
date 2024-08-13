@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 nl:
+  theme_metadata:
+    settings:
+      show_description: 'Beschrijving uit bericht "Over deze categorie" weergeven'
+      show_mobile: 'Banners weergeven op mobiel'
+      show_subcategory: 'Banners weergeven voor subcategorieën'
+      hide_if_no_description: 'Banners verbergen als categoriebeschrijving niet is ingesteld'
+      show_category_logo: 'Categorielogo weergeven'
+      exceptions: "Banner wordt niet weergegeven voor deze categorienamen"
+      categories:
+        description: Categorieën om een banner voor weer te geven
+        schema:
+          properties:
+            category_id:
+              label: Categorie
+              description: "Categorie om een banner voor weer te geven"
+            target:
+              label: Doel
+              description: |
+                all - banner wordt weergegeven voor de geselecteerde categorie en de subcategorieën ervan
+                no_sub - banner wordt alleen weergegeven voor de geselecteerde categorie
+                only_sub - banner wordt alleen weergegeven voor de subcategorieën van de geselecteerde categorie
+      plugin_outlet: "Wijzigt de positie van de banner op de pagina"
+      show_category_icon: Categoriepictogram weergeven van de <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse-component Categoriepictogrammen</a>
+      override_category_icon_color: Als de categoriepictogrammen worden gebruikt, zorgt dit ervoor dat het pictogram overeenkomt met de tekstkleur van de banner

@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 pt_BR:
+  theme_metadata:
+    settings:
+      show_description: 'Mostrar descrição da postagem "Sobre esta categoria"'
+      show_mobile: 'Mostrar banners nos dispositivos móveis'
+      show_subcategory: 'Mostrar banners para subcategorias'
+      hide_if_no_description: 'Ocultar banners se a descrição da categoria não for definida'
+      show_category_logo: 'Mostrar logotipo da categoria'
+      exceptions: "O banner não será mostrado para estes NOMES de categoria"
+      categories:
+        description: Categorias para as quais mostrar banner
+        schema:
+          properties:
+            category_id:
+              label: Categoria
+              description: "Categoria para as quais mostrar banner"
+            target:
+              label: Destino
+              description: |
+                all - O banner será mostrado para a categoria selecionada e suas subcategorias
+                no_sub - O banner será mostrado apenas para a categoria selecionada
+                only_sub - O banner será mostrado apenas para as subcategorias da categoria selecionada
+      plugin_outlet: "Altera a posição do banner na página"
+      show_category_icon: Mostrar o ícone de categoria do <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">componente Ícones de Categoria do Discourse</a>
+      override_category_icon_color: Quando os ícones da categoria forem usados, ative para fazer o ícone combinar com a cor to texto do banner

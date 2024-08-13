@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 zh_CN:
+  theme_metadata:
+    settings:
+      show_description: '显示“关于此类别”帖子的描述'
+      show_mobile: '在移动设备上显示横幅'
+      show_subcategory: '为子类别显示横幅'
+      hide_if_no_description: '如果未设置类别描述，则隐藏横幅'
+      show_category_logo: '显示类别徽标'
+      exceptions: "将不为这些类别名称显示横幅"
+      categories:
+        description: 要显示横幅的类别
+        schema:
+          properties:
+            category_id:
+              label: 类别
+              description: "要显示横幅的类别"
+            target:
+              label: 目标
+              description: |
+                all - 为所选类别及其子类别显示横幅
+                no_sub - 仅为所选类别显示横幅
+                only_sub - 仅为所选类别的子类别显示横幅
+      plugin_outlet: "更改页面上横幅的位置"
+      show_category_icon: 显示 <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse 类别图标组件</a>中的类别图标
+      override_category_icon_color: 使用类别图标时，启用此项会使图标与横幅文本颜色相匹配
