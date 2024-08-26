@@ -25,13 +25,14 @@
             {{d-icon "lock"}}
           {{/if}}
           {{this.category.name}}
-          <PluginOutlet @name="category-banners-after-title" />
+          <PluginOutlet @name="category-banners-after-title" @outletArgs={{hash category=this.category}} />
         </h1>
 
         {{#if this.displayCategoryDescription}}
           <div class="category-title-description">
             <div class="cooked">
               {{html-safe this.category.description}}
+              <PluginOutlet @name="category-banners-after-description" @outletArgs={{hash category=this.category}} />
             </div>
           </div>
         {{/if}}
