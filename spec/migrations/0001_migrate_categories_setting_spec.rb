@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable RSpec/DescribeClass
 RSpec.describe "0001-migrate-categories-setting migration" do
   let!(:theme) { upload_theme_component }
 
