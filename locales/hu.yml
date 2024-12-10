@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 hu:
+  theme_metadata:
+    settings:
+      show_description: '"Erről a kategóriáról" bejegyzés tartalmának megjelenítése'
+      show_mobile: 'Banner megjelenítése mobilon'
+      show_subcategory: 'Banner megjelenítése alkategóriáknál'
+      hide_if_no_description: 'Banner elrejtése, ha a kategórialeírás nincs beállítva'
+      show_category_logo: 'Kategória logó megjelenítése'
+      exceptions: "Banner nem jelenik meg ezeknél a kategória neveknél"
+      categories:
+        description: Kategóriák, amelyeknél a bannert meg kell jeleníteni
+        schema:
+          properties:
+            category_id:
+              label: Kategória
+              description: "Kategóriák, amelyeknél a bannert meg kell jeleníteni"
+            target:
+              label: Kiválasztott
+              description: |
+                mind - A banner az adott kategóriában és annak alkategóriáiban is megjelenik.
+                no_sub - A banner csak az adott kategóriában jelenik meg, az alkategóriákban nem.
+                only_sub - A banner csak az adott kategória alkategóriáiban jelenik meg.
+      plugin_outlet: "Banner pozíciójának módosítása az oldalon"
+      show_category_icon: Kategóriaikon megjelenítése a <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse Kategória Ikonok összetevő</a>
+      override_category_icon_color: Ha a kategória ikonokat használja, akkor ennek engedélyezésével az ikon színe megegyezik a banner szövegével
