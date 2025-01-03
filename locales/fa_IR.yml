@@ -5,3 +5,17 @@
 # https://translate.discourse.org/
 
 fa_IR:
+  theme_metadata:
+    settings:
+      show_mobile: 'نمایش بنرها در موبایل'
+      show_subcategory: 'نمایش بنرها برای زیردسته‌ها'
+      hide_if_no_description: 'اگر توضیحات دسته تنظیم نشده باشد، بنرها را پنهان کن'
+      show_category_logo: 'نمایش لوگوی دسته'
+      categories:
+        schema:
+          properties:
+            category_id:
+              label: دسته بندی
+            target:
+              label: هدف
+      plugin_outlet: "موقعیت بنر را در صفحه تغییر می دهد"
