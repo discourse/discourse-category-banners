@@ -18,10 +18,13 @@ body:not(.category-header) {
   .category-logo {
     grid-area: logo;
     align-self: center;
-    margin: 0 1em 0 0;
     --max-height: 8em;
+    margin: 0 1em 0 0;
     @include breakpoint(tablet) {
       margin: 0 0 0.5em;
+    }
+    &:not(:has(img)) {
+      margin: 0;
     }
   }
   .category-title {
