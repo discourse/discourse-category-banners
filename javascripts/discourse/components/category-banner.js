@@ -10,6 +10,7 @@ export default class DiscourseCategoryBanners extends Component {
   @service router;
   @service site;
   @service categoryBannerPresence;
+
   @tracked category = null;
   @tracked keepDuringLoadingRoute = false;
 
