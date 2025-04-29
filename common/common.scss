@@ -32,6 +32,10 @@ body:not(.category-header) {
     align-self: end;
   }
 
+  .category-title .badge-category__name {
+    font-size: var(--font-up-1);
+  }
+
   .category-title-description {
     grid-area: description;
   }
@@ -79,23 +83,23 @@ div[class^="category-title-header"] {
     }
   }
 
-  // styles that impact the category icons theme component
-  .category-icon-widget-wrapper {
+  // styles that impact the core category icons
+  .badge-category__wrapper {
     display: inline-block;
+    color: unset;
 
-    .category-icon-widget {
+    .badge-category {
       display: flex;
+      color: currentcolor;
+      justify-content: center;
+      align-items: center;
 
-      .category-icon {
-        display: flex;
+      .d-icon {
+        height: 0.75em;
+        width: 0.75em;
 
         @if $override_category_icon_color == "true" {
-          color: currentcolor !important; // overrides inline style
-        }
-
-        .d-icon {
-          height: 0.75em;
-          width: 0.75em;
+          color: currentcolor;
         }
       }
     }

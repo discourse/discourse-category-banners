@@ -13,18 +13,15 @@
           <CategoryLogo @category={{this.category}} />
         {{/if}}
         <h1 class="category-title">
-          {{#if (and (theme-setting "show_category_icon") this.category)}}
-            {{#if this.hasIconComponent}}
-              {{! For compatibility with https://meta.discourse.org/t/category-icons/104683}}
-              <CategoryIcon @category={{this.category}} />
-            {{else}}
-              {{this.consoleWarn}}
+          {{#if this.showCategoryIcon}}
+            {{this.categoryNameBadge}}
+          {{else}}
+            {{#if this.category.read_restricted}}
+              {{d-icon "lock"}}
             {{/if}}
+            {{this.category.name}}
           {{/if}}
-          {{#if this.category.read_restricted}}
-            {{d-icon "lock"}}
-          {{/if}}
-          {{this.category.name}}
+
           <PluginOutlet
             @name="category-banners-after-title"
             @outletArgs={{hash category=this.category}}

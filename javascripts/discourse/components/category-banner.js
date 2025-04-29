@@ -1,9 +1,9 @@
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import { getOwner } from "@ember/application";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
 import { htmlSafe } from "@ember/template";
+import { categoryLinkHTML } from "discourse/helpers/category-link";
 import Category from "discourse/models/category";
 
 export default class DiscourseCategoryBanners extends Component {
@@ -13,10 +13,6 @@ export default class DiscourseCategoryBanners extends Component {
 
   @tracked category = null;
   @tracked keepDuringLoadingRoute = false;
-
-  get hasIconComponent() {
-    return getOwner(this).hasRegistration("component:category-icon");
-  }
 
   get categorySlugPathWithID() {
     return this.router?.currentRoute?.params?.category_slug_path_with_id;
@@ -45,15 +41,27 @@ export default class DiscourseCategoryBanners extends Component {
     );
   }
 
-  get consoleWarn() {
-    // eslint-disable-next-line no-console
-    return console.warn(
-      "The category banners component is trying to use the category icons component, but it is not available. https://meta.discourse.org/t/category-icons/104683"
-    );
-  }
-
   get displayCategoryDescription() {
     return settings.show_description && this.category.description?.length > 0;
+  }
+
+  get showCategoryIcon() {
+    const hasIcon = this.category.style_type === "icon" && this.category.icon;
+    const hasEmoji =
+      this.category.style_type === "emoji" && this.category.emoji;
+
+    if (settings.show_category_icon && (hasIcon || hasEmoji)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  get categoryNameBadge() {
+    return categoryLinkHTML(this.category, {
+      allowUncategorized: true,
+      link: false,
+    });
   }
 
   #parseExceptions(exceptionsStr) {
