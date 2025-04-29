@@ -153,6 +153,17 @@ RSpec.describe "Category Banners", type: :system do
         visit(category_subcategory.url)
         expect(subcategory_banner).to have_emoji(category_subcategory.emoji)
       end
+
+      it "does not display badge when style_type is not icon or emoji" do
+        category.update!(style_type: "square")
+        category_subcategory.update!(style_type: "square")
+
+        visit(category.url)
+        expect(category_banner).to have_no_icon
+
+        visit(category_subcategory.url)
+        expect(subcategory_banner).to have_no_emoji
+      end
     end
 
     context "when false" do
