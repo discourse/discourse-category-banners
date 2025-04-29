@@ -13,7 +13,14 @@
           <CategoryLogo @category={{this.category}} />
         {{/if}}
         <h1 class="category-title">
-          {{this.categoryName this.category}}
+          {{#if this.showCategoryIcon}}
+            {{this.categoryNameBadge}}
+          {{else}}
+            {{#if this.category.read_restricted}}
+              {{d-icon "lock"}}
+            {{/if}}
+            {{this.category.name}}
+          {{/if}}
 
           <PluginOutlet
             @name="category-banners-after-title"

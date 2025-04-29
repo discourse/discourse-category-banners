@@ -32,6 +32,10 @@ body:not(.category-header) {
     align-self: end;
   }
 
+  .category-title .badge-category__name {
+    font-size: var(--font-up-1);
+  }
+
   .category-title-description {
     grid-area: description;
   }

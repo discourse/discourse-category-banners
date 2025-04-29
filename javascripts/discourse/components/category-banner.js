@@ -3,7 +3,7 @@ import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
 import { htmlSafe } from "@ember/template";
-import { categoryBadgeHTML } from "discourse/helpers/category-link";
+import { categoryLinkHTML } from "discourse/helpers/category-link";
 import Category from "discourse/models/category";
 
 export default class DiscourseCategoryBanners extends Component {
@@ -45,20 +45,23 @@ export default class DiscourseCategoryBanners extends Component {
     return settings.show_description && this.category.description?.length > 0;
   }
 
-  categoryName(category) {
-    const hasIcon = category.style_type === "icon" && category.icon;
-    const hasEmoji = category.style_type === "emoji" && category.emoji;
+  get showCategoryIcon() {
+    const hasIcon = this.category.style_type === "icon" && this.category.icon;
+    const hasEmoji =
+      this.category.style_type === "emoji" && this.category.emoji;
 
     if (settings.show_category_icon && (hasIcon || hasEmoji)) {
-      return htmlSafe(
-        categoryBadgeHTML(category, {
-          allowUncategorized: true,
-          link: false,
-        })
-      );
+      return true;
     } else {
-      return category.name;
+      return false;
     }
+  }
+
+  get categoryNameBadge() {
+    return categoryLinkHTML(this.category, {
+      allowUncategorized: true,
+      link: false,
+    });
   }
 
   #parseExceptions(exceptionsStr) {
