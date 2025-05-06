@@ -27,5 +27,4 @@ fi:
                 no_sub – Banneri näytetään vain valitulle alueelle
                 only_sub – Banneri näytetään vain valitun alueen ala-alueilla
       plugin_outlet: "Muuttaa bannerin sijaintia sivulla"
-      show_category_icon: Näytä alueen kuvake <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discoursen alueiden kuvakkeet -komponentista</a>
       override_category_icon_color: Kun alueiden kuvakkeita käytetään, kuvake vastaa bannerin tekstin väriä, kun tämä otetaan käyttöön

@@ -27,5 +27,4 @@ zh_CN:
                 no_sub - 仅为所选类别显示横幅
                 only_sub - 仅为所选类别的子类别显示横幅
       plugin_outlet: "更改页面上横幅的位置"
-      show_category_icon: 显示 <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse 类别图标组件</a>中的类别图标
       override_category_icon_color: 使用类别图标时，启用此项会使图标与横幅文本颜色相匹配

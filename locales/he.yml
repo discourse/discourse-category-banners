@@ -5,3 +5,6 @@
 # https://translate.discourse.org/
 
 he:
+  theme_metadata:
+    settings:
+      show_category_icon: הצגת סמלים או אמוג׳ים של קטגוריות שנוספו בעמוד עריכת הקטגוריות
