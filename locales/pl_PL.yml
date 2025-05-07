@@ -27,5 +27,4 @@ pl_PL:
                 no_sub - Baner będzie wyświetlany tylko dla wybranej kategorii
                 only_sub - Baner będzie wyświetlany tylko dla podkategorii wybranej kategorii
       plugin_outlet: "Zmienia pozycję banera na stronie."
-      show_category_icon: Pokaż ikonę kategorii z <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">komponentu ikon kategorii Discourse</a>
       override_category_icon_color: Gdy używane są ikony kategorii, włączenie tej opcji sprawi, że ikona będzie pasować do koloru tekstu banera.
