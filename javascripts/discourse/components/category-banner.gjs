@@ -1,9 +1,18 @@
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
+import { concat } from "@ember/helper";
 import { action } from "@ember/object";
+import didInsert from "@ember/render-modifiers/modifiers/did-insert";
+import didUpdate from "@ember/render-modifiers/modifiers/did-update";
+import willDestroy from "@ember/render-modifiers/modifiers/will-destroy";
 import { service } from "@ember/service";
 import { htmlSafe } from "@ember/template";
+import CategoryLogo from "discourse/components/category-logo";
+import PluginOutlet from "discourse/components/plugin-outlet";
 import { categoryLinkHTML } from "discourse/helpers/category-link";
+import icon from "discourse/helpers/d-icon";
+import htmlSafe0 from "discourse/helpers/html-safe";
+import lazyHash from "discourse/helpers/lazy-hash";
 import Category from "discourse/models/category";
 
 export default class DiscourseCategoryBanners extends Component {
@@ -155,4 +164,52 @@ export default class DiscourseCategoryBanners extends Component {
       this.categoryBannerPresence.setTo(false);
     }
   }
+
+  <template>
+    {{#if this.shouldRender}}
+      <div
+        {{didInsert this.getCategory}}
+        {{didUpdate this.getCategory this.isVisible}}
+        {{willDestroy this.teardownComponent}}
+        class="category-title-header
+          {{if this.category (concat 'category-banner-' this.category.slug)}}"
+        style={{if this.category this.safeStyle}}
+      >
+        {{#if this.category}}
+          <div class="category-title-contents">
+            {{#if settings.show_category_logo}}
+              <CategoryLogo @category={{this.category}} />
+            {{/if}}
+            <h1 class="category-title">
+              {{#if this.showCategoryIcon}}
+                {{this.categoryNameBadge}}
+              {{else}}
+                {{#if this.category.read_restricted}}
+                  {{icon "lock"}}
+                {{/if}}
+                {{this.category.name}}
+              {{/if}}
+
+              <PluginOutlet
+                @name="category-banners-after-title"
+                @outletArgs={{lazyHash category=this.category}}
+              />
+            </h1>
+
+            {{#if this.displayCategoryDescription}}
+              <div class="category-title-description">
+                <div class="cooked">
+                  {{htmlSafe0 this.category.description}}
+                  <PluginOutlet
+                    @name="category-banners-after-description"
+                    @outletArgs={{lazyHash category=this.category}}
+                  />
+                </div>
+              </div>
+            {{/if}}
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
+  </template>
 }

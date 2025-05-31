@@ -1,3 +1,5 @@
+@use "lib/viewport";
+
 body:not(.category-header) {
   // hides banners based on outcome of shouldShow
   .category-title-header {
@@ -10,7 +12,7 @@ body:not(.category-header) {
   grid-template-areas: "logo title" "logo description";
   grid-template-columns: auto 1fr;
 
-  @include breakpoint(tablet) {
+  @include viewport.until(md) {
     grid-template-areas: "logo" "title" "description";
     grid-template-columns: auto;
   }
@@ -22,7 +24,7 @@ body:not(.category-header) {
 
     --max-height: 8em;
 
-    @include breakpoint(tablet) {
+    @include viewport.until(md) {
       margin: 0 0 0.5em;
     }
   }
