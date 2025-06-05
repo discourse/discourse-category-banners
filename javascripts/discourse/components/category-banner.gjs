@@ -11,7 +11,6 @@ import CategoryLogo from "discourse/components/category-logo";
 import PluginOutlet from "discourse/components/plugin-outlet";
 import { categoryLinkHTML } from "discourse/helpers/category-link";
 import icon from "discourse/helpers/d-icon";
-import htmlSafe0 from "discourse/helpers/html-safe";
 import lazyHash from "discourse/helpers/lazy-hash";
 import Category from "discourse/models/category";
 
@@ -199,7 +198,7 @@ export default class DiscourseCategoryBanners extends Component {
             {{#if this.displayCategoryDescription}}
               <div class="category-title-description">
                 <div class="cooked">
-                  {{htmlSafe0 this.category.description}}
+                  {{htmlSafe this.category.description}}
                   <PluginOutlet
                     @name="category-banners-after-description"
                     @outletArgs={{lazyHash category=this.category}}
