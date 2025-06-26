@@ -47,6 +47,8 @@ div[class^="category-title-header"] {
   display: flex;
   width: 100%;
   justify-content: center;
+  background: var(--category-banner-bg-color);
+  color: var(--category-banner-color);
 
   @if $align_text == "center" {
     text-align: center;

@@ -45,7 +45,7 @@ export default class DiscourseCategoryBanners extends Component {
 
   get safeStyle() {
     return htmlSafe(
-      `background-color: #${this.category.color}; color: #${this.category.text_color};`
+      `--category-banner-bg-color: #${this.category.color}; --category-banner-color: #${this.category.text_color};`
     );
   }
 
