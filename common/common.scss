@@ -1,3 +1,5 @@
+@use "lib/viewport";
+
 body:not(.category-header) {
   // hides banners based on outcome of shouldShow
   .category-title-header {
@@ -10,7 +12,7 @@ body:not(.category-header) {
   grid-template-areas: "logo title" "logo description";
   grid-template-columns: auto 1fr;
 
-  @include breakpoint(tablet) {
+  @include viewport.until(md) {
     grid-template-areas: "logo" "title" "description";
     grid-template-columns: auto;
   }
@@ -20,17 +22,25 @@ body:not(.category-header) {
     align-self: center;
     --max-height: 8em;
     margin: 0 1em 0 0;
-    @include breakpoint(tablet) {
+    
+    @include viewport.until(md) {
       margin: 0 0 0.5em;
     }
+    
     &:not(:has(img)) {
       margin: 0;
     }
   }
+
   .category-title {
     grid-area: title;
     align-self: end;
   }
+
+  .category-title .badge-category__name {
+    font-size: var(--font-up-1);
+  }
+
   .category-title-description {
     grid-area: description;
   }
@@ -40,9 +50,13 @@ div[class^="category-title-header"] {
   display: flex;
   width: 100%;
   justify-content: center;
+  background: var(--category-banner-background);
+  color: var(--category-banner-color);
+
   @if $align_text == "center" {
     text-align: center;
   }
+
   @if $align_text == "right" {
     text-align: right;
   }
@@ -61,7 +75,7 @@ div[class^="category-title-header"] {
   .category-title-description {
     a,
     a:visited {
-      color: currentColor;
+      color: currentcolor;
       text-decoration: underline;
     }
 
@@ -76,21 +90,23 @@ div[class^="category-title-header"] {
     }
   }
 
-  // styles that impact the category icons theme component
-
-  .category-icon-widget-wrapper {
+  // styles that impact the core category icons
+  .badge-category__wrapper {
     display: inline-block;
+    color: unset;
 
-    .category-icon-widget {
+    .badge-category {
       display: flex;
-      .category-icon {
-        display: flex;
+      color: currentcolor;
+      justify-content: center;
+      align-items: center;
+
+      .d-icon {
+        height: 0.75em;
+        width: 0.75em;
+
         @if $override_category_icon_color == "true" {
-          color: currentColor !important; // overrides inline style
-        }
-        .d-icon {
-          height: 0.75em;
-          width: 0.75em;
+          color: currentcolor;
         }
       }
     }

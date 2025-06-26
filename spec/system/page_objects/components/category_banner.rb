@@ -38,6 +38,22 @@ module PageObjects
         has_no_css?("#{category_banner_selector} .category-logo img[src]")
       end
 
+      def has_icon?(name)
+        has_css?("#{category_banner_selector} .badge-category.--style-icon .d-icon-#{name}")
+      end
+
+      def has_no_icon?
+        has_no_css?("#{category_banner_selector} .badge-category.--style-icon .d-icon")
+      end
+
+      def has_emoji?(name)
+        has_css?("#{category_banner_selector} .badge-category .emoji[alt='#{name}']")
+      end
+
+      def has_no_emoji?
+        has_no_css?("#{category_banner_selector} .badge-category.--style-emoji .emoji")
+      end
+
       private
 
       def category_banner_selector

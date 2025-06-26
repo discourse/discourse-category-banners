@@ -133,4 +133,52 @@ RSpec.describe "Category Banners", type: :system do
 
     expect(subcategory_banner).to have_no_logo
   end
+
+  describe "with show_category_icon" do
+    before do
+      category.update!(style_type: "icon", icon: "envelope")
+      category_subcategory.update!(style_type: "emoji", emoji: "rocket")
+    end
+
+    context "when true" do
+      before do
+        theme.update_setting(:show_category_icon, true)
+        theme.save!
+      end
+
+      it "displays the icons and emojis" do
+        visit(category.url)
+        expect(category_banner).to have_icon(category.icon)
+
+        visit(category_subcategory.url)
+        expect(subcategory_banner).to have_emoji(category_subcategory.emoji)
+      end
+
+      it "does not display badge when style_type is not icon or emoji" do
+        category.update!(style_type: "square")
+        category_subcategory.update!(style_type: "square")
+
+        visit(category.url)
+        expect(category_banner).to have_no_icon
+
+        visit(category_subcategory.url)
+        expect(subcategory_banner).to have_no_emoji
+      end
+    end
+
+    context "when false" do
+      before do
+        theme.update_setting(:show_category_icon, false)
+        theme.save!
+      end
+
+      it "does not display the category icon" do
+        visit(category.url)
+        expect(category_banner).to have_no_icon
+
+        visit(category_subcategory.url)
+        expect(subcategory_banner).to have_no_emoji
+      end
+    end
+  end
 end

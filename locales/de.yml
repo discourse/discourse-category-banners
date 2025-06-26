@@ -27,5 +27,5 @@ de:
                 no_sub – Banner wird nur für die ausgewählte Kategorie angezeigt
                 only_sub – Banner wird nur für die Unterkategorien der ausgewählten Kategorie angezeigt
       plugin_outlet: "Ändert die Position des Banners auf der Seite"
-      show_category_icon: Zeige das Kategoriesymbol aus der <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Komponente Discourse Category Icons</a> an
+      show_category_icon: Kategoriesymbole oder -emojis anzeigen, die auf der Seite „Kategorie bearbeiten“ hinzugefügt wurden
       override_category_icon_color: Wenn die Kategoriesymbole verwendet werden, passt die Aktivierung dieser Option das Symbol an die Textfarbe des Banners an

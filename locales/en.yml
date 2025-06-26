@@ -21,5 +21,5 @@ en:
                 no_sub - Banner will only show for the selected category
                 only_sub - Banner will only show for the subcategories of the selected category
       plugin_outlet: "Changes the position of the banner on the page"
-      show_category_icon: Show category icon from the <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse Category Icons component</a>
+      show_category_icon: Show category icons or emojis added in the Edit Category page
       override_category_icon_color: When the category icons are used, enabling this will make the icon match the banner text color

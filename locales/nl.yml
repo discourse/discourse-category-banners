@@ -27,5 +27,4 @@ nl:
                 no_sub - banner wordt alleen weergegeven voor de geselecteerde categorie
                 only_sub - banner wordt alleen weergegeven voor de subcategorieën van de geselecteerde categorie
       plugin_outlet: "Wijzigt de positie van de banner op de pagina"
-      show_category_icon: Categoriepictogram weergeven van de <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse-component Categoriepictogrammen</a>
       override_category_icon_color: Als de categoriepictogrammen worden gebruikt, zorgt dit ervoor dat het pictogram overeenkomt met de tekstkleur van de banner

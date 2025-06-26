@@ -27,5 +27,4 @@ ja:
                 no_sub - 選択されたカテゴリにのみバナーが表示されます
                 only_sub - 選択されたカテゴリのサブカテゴリにのみバナーが表示されます
       plugin_outlet: "バナーのページ上の位置を変更します"
-      show_category_icon: <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse Category Icons コンポーネント</a>からカテゴリアイコンを表示する
       override_category_icon_color: カテゴリアイコンが使用されている場合、これを有効にすると、アイコンとバナーテキストの色が一致するようになります

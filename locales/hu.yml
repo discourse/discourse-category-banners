@@ -27,5 +27,4 @@ hu:
                 no_sub - A banner csak az adott kategóriában jelenik meg, az alkategóriákban nem.
                 only_sub - A banner csak az adott kategória alkategóriáiban jelenik meg.
       plugin_outlet: "Banner pozíciójának módosítása az oldalon"
-      show_category_icon: Kategóriaikon megjelenítése a <a href="https://meta.discourse.org/t/category-icons/104683" target="_blank">Discourse Kategória Ikonok összetevő</a>
       override_category_icon_color: Ha a kategória ikonokat használja, akkor ennek engedélyezésével az ikon színe megegyezik a banner szövegével
