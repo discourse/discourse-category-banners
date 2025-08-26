@@ -27,4 +27,5 @@ es:
                 no_sub: el banner solo se mostrará para la categoría seleccionada
                 only_sub: el banner solo se mostrará para las subcategorías de la categoría seleccionada
       plugin_outlet: "Cambia la posición del banner en la página."
+      show_category_icon: Mostrar íconos de categoría o emojis añadidos en la página Editar categoría
       override_category_icon_color: Cuando se utilicen los iconos de categoría, al activar esta opción el icono coincidirá con el color del texto del banner
