@@ -27,4 +27,5 @@ fi:
                 no_sub – Banneri näytetään vain valitulle alueelle
                 only_sub – Banneri näytetään vain valitun alueen ala-alueilla
       plugin_outlet: "Muuttaa bannerin sijaintia sivulla"
+      show_category_icon: Näytä alueiden kuvakkeet tai emojit, jotka on lisätty Muokkaa aluetta -sivulla
       override_category_icon_color: Kun alueiden kuvakkeita käytetään, kuvake vastaa bannerin tekstin väriä, kun tämä otetaan käyttöön
