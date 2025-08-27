@@ -27,4 +27,5 @@ fr:
                 no_sub - La bannière s'affichera uniquement pour la catégorie sélectionnée
                 only_sub - La bannière s'affichera uniquement pour les sous-catégories de la catégorie sélectionnée
       plugin_outlet: "Modifie la position de la bannière sur la page"
+      show_category_icon: Afficher les icônes de catégorie ou les émojis ajoutés dans la page Modifier la catégorie
       override_category_icon_color: Lorsque les icônes de catégorie sont utilisées, l'activation de cette option fera correspondre l'icône à la couleur du texte de la bannière.
