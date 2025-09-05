@@ -1,5 +1,10 @@
 @use "lib/viewport";
 
+// hide core  category heading
+.category-heading.--has-logo {
+  display: none;
+}
+
 body:not(.category-header) {
   // hides banners based on outcome of shouldShow
   .category-title-header {
