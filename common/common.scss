@@ -7,6 +7,13 @@ body:not(.category-header) {
   }
 }
 
+body.category-header {
+  // hide core category heading
+  .category-heading {
+    display: none;
+  }
+}
+
 .category-title-contents {
   display: grid;
   grid-template-areas: "logo title" "logo description";
