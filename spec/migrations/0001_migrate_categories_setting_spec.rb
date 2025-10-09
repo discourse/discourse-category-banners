@@ -4,10 +4,10 @@
 RSpec.describe "0001-migrate-categories-setting migration" do
   let!(:theme) { upload_theme_component }
 
-  fab!(:category_1) { Fabricate(:category) }
-  fab!(:category_2) { Fabricate(:category) }
-  fab!(:category_3) { Fabricate(:category) }
-  fab!(:category_4) { Fabricate(:category) }
+  fab!(:category_1, :category)
+  fab!(:category_2, :category)
+  fab!(:category_3, :category)
+  fab!(:category_4, :category)
 
   it "sets target to `all` if previous target property is not one of `all`, `no_sub` or  `only_sub`" do
     theme.theme_settings.create!(
