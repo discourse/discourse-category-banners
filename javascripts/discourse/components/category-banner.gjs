@@ -206,7 +206,10 @@ export default class DiscourseCategoryBanners extends Component {
                 <div
                   class="cooked"
                   {{didInsert this.decorateDescriptionHashtags}}
-                  {{didUpdate this.decorateDescriptionHashtags this.category.description}}
+                  {{didUpdate
+                    this.decorateDescriptionHashtags
+                    this.category.description
+                  }}
                 >
                   {{htmlSafe this.category.description}}
                   <PluginOutlet
