@@ -88,8 +88,10 @@ div[class^="category-title-header"] {
     }
 
     a.mention,
-    a.mention-group {
+    a.mention-group,
+    a.hashtag-cooked {
       color: var(--primary);
+      background: var(--mention-background-color);
       text-decoration: none;
     }
 
