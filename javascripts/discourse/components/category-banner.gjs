@@ -12,6 +12,7 @@ import PluginOutlet from "discourse/components/plugin-outlet";
 import { categoryLinkHTML } from "discourse/helpers/category-link";
 import icon from "discourse/helpers/d-icon";
 import lazyHash from "discourse/helpers/lazy-hash";
+import { decorateHashtags } from "discourse/lib/hashtag-decorator";
 import Category from "discourse/models/category";
 
 export default class DiscourseCategoryBanners extends Component {
@@ -117,6 +118,11 @@ export default class DiscourseCategoryBanners extends Component {
   }
 
   @action
+  decorateDescriptionHashtags(element) {
+    decorateHashtags(element, this.site);
+  }
+
+  @action
   teardownComponent() {
     document.body.classList.remove("category-header");
     this.category = null;
@@ -197,7 +203,14 @@ export default class DiscourseCategoryBanners extends Component {
 
             {{#if this.displayCategoryDescription}}
               <div class="category-title-description">
-                <div class="cooked">
+                <div
+                  class="cooked"
+                  {{didInsert this.decorateDescriptionHashtags}}
+                  {{didUpdate
+                    this.decorateDescriptionHashtags
+                    this.category.description
+                  }}
+                >
                   {{htmlSafe this.category.description}}
                   <PluginOutlet
                     @name="category-banners-after-description"
