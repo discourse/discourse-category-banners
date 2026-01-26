@@ -2,7 +2,7 @@
 
 require_relative "page_objects/components/category_banner"
 
-RSpec.describe "Category Banners", type: :system do
+RSpec.describe "Category Banners" do
   let!(:theme) { upload_theme_component }
   fab!(:category) { Fabricate(:category, description: "<p>this is some description</p>") }
   fab!(:category_subcategory) do
