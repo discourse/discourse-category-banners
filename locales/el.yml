@@ -5,3 +5,27 @@
 # https://translate.discourse.org/
 
 el:
+  theme_metadata:
+    settings:
+      show_description: 'Εμφάνιση περιγραφής από την ανάρτηση "Σχετικά με αυτήν την κατηγορία"'
+      show_mobile: 'Εμφάνιση banner σε κινητά'
+      show_subcategory: 'Εμφάνιση banner για υποκατηγορίες'
+      hide_if_no_description: 'Απόκρυψη banner εάν δεν έχει οριστεί περιγραφή κατηγορίας'
+      show_category_logo: 'Εμφάνιση λογότυπου κατηγορίας'
+      exceptions: "Το banner δεν θα εμφανίζεται για αυτά τα ΟΝΟΜΑΤΑ κατηγοριών"
+      categories:
+        description: Κατηγορίες για την εμφάνιση ενός banner
+        schema:
+          properties:
+            category_id:
+              label: Κατηγορία
+              description: "Κατηγορία για την εμφάνιση ενός banner"
+            target:
+              label: Στόχος
+              description: |
+                all - Το banner θα εμφανίζεται για την επιλεγμένη κατηγορία και τις υποκατηγορίες της
+                no_sub - Το banner θα εμφανίζεται μόνο για την επιλεγμένη κατηγορία
+                only_sub - Το banner θα εμφανίζεται μόνο για τις υποκατηγορίες της επιλεγμένης κατηγορίας
+      plugin_outlet: "Αλλάζει τη θέση του banner στη σελίδα"
+      show_category_icon: Εμφάνιση εικονιδίων κατηγορίας ή emoji που προστέθηκαν στη σελίδα Επεξεργασία κατηγορίας
+      override_category_icon_color: Όταν χρησιμοποιούνται τα εικονίδια κατηγορίας, η ενεργοποίησή της θα κάνει το εικονίδιο να ταιριάζει με το χρώμα του κειμένου του banner.
