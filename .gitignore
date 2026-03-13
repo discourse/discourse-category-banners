@@ -1,3 +1,4 @@
 node_modules
 .discourse-site
-.vscode.eslintcache
+.vscode
+.eslintcache
