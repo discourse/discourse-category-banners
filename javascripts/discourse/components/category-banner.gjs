@@ -1,18 +1,24 @@
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { concat } from "@ember/helper";
+import { on } from "@ember/modifier";
 import { action } from "@ember/object";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import didUpdate from "@ember/render-modifiers/modifiers/did-update";
 import willDestroy from "@ember/render-modifiers/modifiers/will-destroy";
 import { service } from "@ember/service";
-import { htmlSafe } from "@ember/template";
+import { trustHTML } from "@ember/template";
 import CategoryLogo from "discourse/components/category-logo";
 import PluginOutlet from "discourse/components/plugin-outlet";
 import { categoryLinkHTML } from "discourse/helpers/category-link";
 import icon from "discourse/helpers/d-icon";
 import lazyHash from "discourse/helpers/lazy-hash";
+import {
+  openLinkInNewTab,
+  shouldOpenInNewTab,
+} from "discourse/lib/click-track";
 import { decorateHashtags } from "discourse/lib/hashtag-decorator";
+import { wantsNewWindow } from "discourse/lib/intercept-click";
 import Category from "discourse/models/category";
 
 export default class DiscourseCategoryBanners extends Component {
@@ -45,7 +51,7 @@ export default class DiscourseCategoryBanners extends Component {
   }
 
   get safeStyle() {
-    return htmlSafe(
+    return trustHTML(
       `--category-banner-background: #${this.category.color}; --category-banner-color: #${this.category.text_color};`
     );
   }
@@ -120,6 +126,23 @@ export default class DiscourseCategoryBanners extends Component {
   @action
   decorateDescriptionHashtags(element) {
     decorateHashtags(element, this.site);
+  }
+
+  @action
+  handleDescriptionClick(event) {
+    const link = event.target.closest("a");
+    if (!link || link.target === "_blank" || wantsNewWindow(event)) {
+      return;
+    }
+
+    const href = (link.getAttribute("href") || "").trim();
+    if (!href || /^(mailto|javascript|tel|sms):/i.test(href)) {
+      return;
+    }
+
+    if (shouldOpenInNewTab(link.href)) {
+      openLinkInNewTab(event, link);
+    }
   }
 
   @action
@@ -203,6 +226,7 @@ export default class DiscourseCategoryBanners extends Component {
 
             {{#if this.displayCategoryDescription}}
               <div class="category-title-description">
+                {{! template-lint-disable no-invalid-interactive }}
                 <div
                   class="cooked"
                   {{didInsert this.decorateDescriptionHashtags}}
@@ -210,8 +234,9 @@ export default class DiscourseCategoryBanners extends Component {
                     this.decorateDescriptionHashtags
                     this.category.description
                   }}
+                  {{on "click" this.handleDescriptionClick}}
                 >
-                  {{htmlSafe this.category.description}}
+                  {{trustHTML this.category.description}}
                   <PluginOutlet
                     @name="category-banners-after-description"
                     @outletArgs={{lazyHash category=this.category}}
