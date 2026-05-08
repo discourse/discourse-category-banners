@@ -6,8 +6,9 @@ import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import didUpdate from "@ember/render-modifiers/modifiers/did-update";
 import willDestroy from "@ember/render-modifiers/modifiers/will-destroy";
 import { service } from "@ember/service";
-import { htmlSafe } from "@ember/template";
+import { trustHTML } from "@ember/template";
 import CategoryLogo from "discourse/components/category-logo";
+import HtmlWithLinks from "discourse/components/html-with-links";
 import PluginOutlet from "discourse/components/plugin-outlet";
 import { categoryLinkHTML } from "discourse/helpers/category-link";
 import icon from "discourse/helpers/d-icon";
@@ -45,7 +46,7 @@ export default class DiscourseCategoryBanners extends Component {
   }
 
   get safeStyle() {
-    return htmlSafe(
+    return trustHTML(
       `--category-banner-background: #${this.category.color}; --category-banner-color: #${this.category.text_color};`
     );
   }
@@ -211,7 +212,9 @@ export default class DiscourseCategoryBanners extends Component {
                     this.category.description
                   }}
                 >
-                  {{htmlSafe this.category.description}}
+                  <HtmlWithLinks>
+                    {{trustHTML this.category.description}}
+                  </HtmlWithLinks>
                   <PluginOutlet
                     @name="category-banners-after-description"
                     @outletArgs={{lazyHash category=this.category}}
