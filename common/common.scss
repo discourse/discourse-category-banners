@@ -14,6 +14,12 @@ body.category-header {
   }
 }
 
+#main-outlet {
+  .category-title-header {
+    margin-bottom: 1em;
+  }
+}
+
 .category-title-contents {
   display: grid;
   grid-template-areas: "logo title" "logo description";
